@@ -28,7 +28,7 @@ void module_transcrit(char** argv[]) {
 	lire_seq(argv, ls, atranscrire); /*Récupère la séquence en entier*/
 	
 	printf(atranscrire); /*juste pour vérifier que tout va bien quand ça marchera*/ 
-	/*Mettre ici suppression d'un fichier transcrit existant = cleaner env travail*/
+	/*Mettre ici suppression d'un fichier transcrit existant = cleaner env travail ou renommer*/
 	
 	FILE * fp = fopen ("transcrit.txt", "a"); /*Ouverture d'un fichier transcrit.txt pour écrire dedans*/
 	if (!fp) {
