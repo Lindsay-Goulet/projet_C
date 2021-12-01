@@ -48,7 +48,7 @@ void module_transcrit(char* argv[]) {
 	char atranscrire[ls]; 
 	lire_seq(argv, ls, atranscrire); /*Récupère la séquence en entier*/
 
-	int codante = seq_codante(ls, atranscrire[ls], codon1[3]);
+	int codante = seq_codante(argv, ls, atranscrire[ls], codon1[3]);
 	if (codante == 0) 
 		printf("Cette séquence n'est pas codante, vous ne pouvez donc pas utiliser ce module, essayez avec une autre séquence ou utilisez un autre module.");
 	
