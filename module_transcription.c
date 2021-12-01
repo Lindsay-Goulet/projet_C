@@ -3,12 +3,37 @@
 
 #include "module_score.c"
 
-int seq_codante(char* argv[]) {
+int longueur_seq(char* fic) {
+	int taille_seq=0;
+	int el;
+
+	FILE* f = fopen(fic, "r"); /* ouverture du fichier*/
+	if (!f) {
+		printf("L'ouverture a echoué.\n");
+		exit(EXIT_FAILURE);
+	}
+	
+	while (fscanf(f, "%lc", &el) != EOF) { /*je parcours tout le fichier et je compte les éléments*/
+		taille_seq++;
+	}
+	
+	return taille_seq-1;
+}
+
+void lire_seq(char* fic, int ls, char seq[ls]) {
+	FILE* f = fopen(fic, "r"); /* ouverture du fichier*/
+		if (!f) {
+			printf("L'ouverture a echoué.\n");
+			exit(EXIT_FAILURE);
+		}
+	fgets(seq, ls+1, f); /*je récupère dans le fichier f une chaîne de caractère de longueur ls que je stock dans mon tableau seq*/
+}
+
+int seq_codante(char* argv[], int ls, char codon1[3]) {
 /*A optimiser quand fichier fait*/
 /*Fonction qui retourne 1 si la séquence ADN est codante (longueur divisible par 3 et a un codon d'initiation)*/
 	
-	int ls = longueur_seq(argv); /*Initie la longueur de la chaîne*/
-	char codon1[3]; 
+	ls = longueur_seq(argv); /*Initie la longueur de la chaîne*/ 
 	lire_seq(argv, 3, codon1); /*Je récupère les trois premiers nucléotides = premier codon de la séquence*/
 	
 	int booleen=0; /*Initie un booléen*/
