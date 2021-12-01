@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "module_score.c"
-
 int longueur_seq(char* fic) {
 	int taille_seq=0;
 	int el;
@@ -29,7 +27,7 @@ void lire_seq(char* fic, int ls, char seq[ls]) {
 	fgets(seq, ls+1, f); /*je récupère dans le fichier f une chaîne de caractère de longueur ls que je stock dans mon tableau seq*/
 }
 
-int seq_codante(char* argv[], int ls, char codon1[3]) {
+int seq_codante(char argv[], int ls, char codon1[3]) {
 /*A optimiser quand fichier fait*/
 /*Fonction qui retourne 1 si la séquence ADN est codante (longueur divisible par 3 et a un codon d'initiation)*/
 	
