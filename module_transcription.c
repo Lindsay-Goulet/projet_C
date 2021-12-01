@@ -6,43 +6,45 @@
 int seq_codante(char* argv[]) {
 /*A optimiser quand fichier fait*/
 /*Fonction qui retourne 1 si la séquence ADN est codante (longueur divisible par 3 et a un codon d'initiation)*/
-	int ls = longueur_seq(argv[1]); /*Initie la longueur de la chaîne*/
-	char codon1[3]; 
-	lire_seq(argv, 3, codon1); /**/
 	
-	int booleen=0;
-	if (ls%3==0 && codon1=='ATG'){ 
+	int ls = longueur_seq(argv); /*Initie la longueur de la chaîne*/
+	char codon1[3]; 
+	lire_seq(argv, 3, codon1); /*Je récupère les trois premiers nucléotides = premier codon de la séquence*/
+	
+	int booleen=0; /*Initie un booléen*/
+	if (ls%3==0 && codon1=='ATG'){ /*Vérifie si séquence codante et si oui bool=1*/
 		booleen=1;
 	}
-	return booleen;
+	return booleen; /*Retourne le booléen*/
 }
 
 
 void module_transcrit(char** argv[]) {
-
-/*Redemander à l'utilisateur une séquence si elle est non codante*/
-	int ls = longueur_seq(argv); /*i!!!!!!nitie la longueur de la chaîne*/
-	char atranscrire[ls];
-	lire_seq(argv, ls, atranscrire);
+/*Procédure qui transcrit le brin d'ADN en ARN si le brin est un brin codant*/
+/*NE PAS OUBLIER : Redemander à l'utilisateur une séquence si elle est non codante*/
 	
-	printf(atranscrire);
-	/*Mettre ici suppression d'un fichier transcrit existant*/
+	int ls = longueur_seq(argv); /*Initie la longueur de la chaîne*/
+	char atranscrire[ls]; 
+	lire_seq(argv, ls, atranscrire); /*Récupère la séquence en entier*/
 	
-	FILE * fp = fopen ("transcrit.txt", "a"); /*Regarder pour trouver u moyer de changer le nom du fichier ou cleaner env travail*/
+	printf(atranscrire); /*juste pour vérifier que tout va bien quand ça marchera*/ 
+	/*Mettre ici suppression d'un fichier transcrit existant = cleaner env travail*/
+	
+	FILE * fp = fopen ("transcrit.txt", "a"); /*Ouverture d'un fichier transcrit.txt pour écrire dedans*/
 	if (!fp) {
 		printf ("L’ouverture a échoué.\n") ;
 		exit ( EXIT_FAILURE );	
 	}
 	
-	for (int i=0; i<ls; i++){
-	 	if (atranscrire[i]=="T")
+	for (int i=0; i<ls; i++){ 
+	 	if (atranscrire[i]=="T") /*Quand T -> U*/
 	 		fprintf(fp, "U");
 	 	else 
-	 		fprintf(fp, atranscrire[i]);
-	 	if (i%80==0)
+	 		fprintf(fp, atranscrire[i]); /*Quand autre, juste mettre le nucléotide*/
+	 	if (i%80==0) /*Pour respecter le format fasta*/
 	 		fprintf(fp, "\n");
 	}
-	fclose(fp);
+	fclose(fp); /*Fermeture du fichier*/
 }
 
 
