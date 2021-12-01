@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "module_score.c"
-
 int longueur_seq(char* fic) {
 	int taille_seq=0;
 	int el;
