@@ -48,7 +48,6 @@ void module_transcrit(char** argv[]) {
 
 
 int main(int argc, char * argv[]) {
-	//module_score_id(argv);
 	module_transcrit(argv);
 }	
 
