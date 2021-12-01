@@ -7,7 +7,7 @@ int longueur_seq(char* fic) {
 
 	FILE* f = fopen(fic, "r"); /* ouverture du fichier*/
 	if (!f) {
-		printf("L'ouverture a echoué.\n");
+		printf("L'ouverture a échoué.\n");
 		exit(EXIT_FAILURE);
 	}
 	
@@ -27,28 +27,31 @@ void lire_seq(char* fic, int ls, char seq[ls]) {
 	fgets(seq, ls+1, f); /*je récupère dans le fichier f une chaîne de caractère de longueur ls que je stock dans mon tableau seq*/
 }
 
-int seq_codante(char* argv[], int ls, char codon1[3]) {
+int seq_codante(int ls, char seq[ls], char codon1[3]) {
 /*A optimiser quand fichier fait*/
 /*Fonction qui retourne 1 si la séquence ADN est codante (longueur divisible par 3 et a un codon d'initiation)*/
-	
-	ls = longueur_seq(argv); /*Initie la longueur de la chaîne*/ 
 	lire_seq(argv, 3, codon1); /*Je récupère les trois premiers nucléotides = premier codon de la séquence*/
 	
 	int booleen=0; /*Initie un booléen*/
-	if (ls%3==0 && codon1=='ATG'){ /*Vérifie si séquence codante et si oui bool=1*/
+	if (ls%3==0 && codon1=="ATG"){ /*Vérifie si séquence codante et si oui bool=1*/
 		booleen=1;
 	}
 	return booleen; /*Retourne le booléen*/
 }
 
 
-void module_transcrit(char** argv[]) {
+void module_transcrit(char* argv[]) {
 /*Procédure qui transcrit le brin d'ADN en ARN si le brin est un brin codant*/
 /*NE PAS OUBLIER : Redemander à l'utilisateur une séquence si elle est non codante*/
 	
 	int ls = longueur_seq(argv); /*Initie la longueur de la chaîne*/
 	char atranscrire[ls]; 
 	lire_seq(argv, ls, atranscrire); /*Récupère la séquence en entier*/
+
+	int codante = seq_codante(ls, atranscrire[ls], codon1[3]);
+	if (codante == 0) 
+		printf("Cette séquence n'est pas codante, vous ne pouvez donc pas 
+		utiliser ce module, essayez avec une autre séquence ou utilisez un autre module.");
 	
 	printf(atranscrire); /*juste pour vérifier que tout va bien quand ça marchera*/ 
 	/*Mettre ici suppression d'un fichier transcrit existant = cleaner env travail ou renommer*/
