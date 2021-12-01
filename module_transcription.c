@@ -5,10 +5,10 @@
 
 int seq_codante(char* argv[]) {
 /*A optimiser quand fichier fait*/
-/*Fonction qui retourne 1 si la séquence ADN est codante (longueur divisible par 3 et a un codon d'initiation*/
-	int ls = longueur_seq(argv[1]); /*initie la longueur de la chaîne*/
-	char codon1[3];
-	lire_seq(argv, 3, codon1);
+/*Fonction qui retourne 1 si la séquence ADN est codante (longueur divisible par 3 et a un codon d'initiation)*/
+	int ls = longueur_seq(argv[1]); /*Initie la longueur de la chaîne*/
+	char codon1[3]; 
+	lire_seq(argv, 3, codon1); /**/
 	
 	int booleen=0;
 	if (ls%3==0 && codon1=='ATG'){ 
