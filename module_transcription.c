@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+/*je teste les modifications*/
 
 int longueur_seq(char* fic) {
 	int taille_seq=0;
