@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-<<<<<<< HEAD
-=======
+
 /*je teste les modifications*/
->>>>>>> 3ab869db60a8af5d4b74d649aaaa3c8f364a5fb3
+
 
 int longueur_seq(char* fic) {
 	int taille_seq=0;
@@ -31,11 +30,9 @@ void lire_seq(char* fic, int ls, char seq[ls]) {
 	fgets(seq, ls+1, f); /*je récupère dans le fichier f une chaîne de caractère de longueur ls que je stock dans mon tableau seq*/
 }
 
-<<<<<<< HEAD
-int seq_codante(char argv[], int ls, char codon1[3]) {
 =======
 int seq_codante(char* argv, int ls, char* seq[ls], char* codon1[3]) {
->>>>>>> 3ab869db60a8af5d4b74d649aaaa3c8f364a5fb3
+
 /*A optimiser quand fichier fait*/
 /*Fonction qui retourne 1 si la séquence ADN est codante (longueur divisible par 3 et a un codon d'initiation)*/
 	lire_seq(argv, 3, codon1); /*Je récupère les trois premiers nucléotides = premier codon de la séquence*/
