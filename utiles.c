@@ -8,15 +8,23 @@ void get_path_from_user(char* path_input) {
 
 void extract_sequence(const char* path_input, char* sequence) {
 /* ajouter procédure qui supp ligne inutile */
-	char ligne[81];
+	char ligne[82];
+	int i=0;
+	int j;
     FILE* f = fopen(path_input, "r"); /* ouverture du fichier*/
 	    	if (!f) {
 		    	printf("L'ouverture a echoué.\n");
 			    exit(EXIT_FAILURE);
 		    }
-    while (fgets(ligne, 81, f) != NULL)  {
-    	printf("%s", ligne );
-        /* comment stocker dans variable ?*/
+    while (fgets(ligne, 81, f))  {
+    	j=0;
+    	while (ligne[j] != '\0' && ligne[j] != '\n') {
+    		printf("%c", ligne[j]);
+		sequence[i] = ligne[j];			
+		i++;
+		j++;
+		}
+	
    }
 }
 
