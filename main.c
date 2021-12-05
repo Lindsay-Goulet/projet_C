@@ -6,11 +6,11 @@
 
 
 int main() {
-	int numero_module=0;
-	while (numero_module > 7 || numero_module < 1) {
-	
-        printf("Bonjour et bienvenue dans le logiciel d'analyse de séquences.\nQuel module voulez-vous utiliser ?\n1. Recherche de la séquence codante de taille maximale.\n2. Transcription d’une séquence ADN en séquence ARN.\n3. Traduction d’une séquence codante en séquence protéique.\n4. Calcul du score d’identité entre deux séquences.\n5. Calcul du score de similarité de polarité entre deux séquences protéiques.\n6. Recherche d’une séquence consensus à partir d’un alignement multiple.\n7. Recherche de la plus grande sous-chaîne de polarité commune à 2 séquences protéiques.\n");
-        scanf("%d", &numero_module);
+	int module_number=0;
+    char path_input[30];
+    printf("Bonjour et bienvenue dans le logiciel d'analyse de séquences.");
+    get_path_from_user(path_input); /*on demande à l'utilisateur la séquence à étudier*/
+	get_module_number_from_user(module_number); /*on demande à l'utilisateur le module qu'il veut utiliser*/
 	
 	    switch(numero_module)
         {
