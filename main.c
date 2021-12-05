@@ -15,7 +15,7 @@ int main() {
 	    switch(numero_module)
         {
             case 1:
-                /*instruction*/;
+                /*instruction*/
                 break;
 
             case 2:
@@ -27,7 +27,10 @@ int main() {
                 break;
 
             case 4:
-                /*instruction*/;
+                printf("Avec quelle séquence voulez-vous comparer ?");
+	            char path_input2[30];
+	            get_path_from_user(char* path_input2);
+	            module_score_id(path_input, path_input2);
                 break;
             
             case 5:
