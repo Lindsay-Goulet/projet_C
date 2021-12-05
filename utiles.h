@@ -14,6 +14,12 @@ tous les 80 caractères, comme dans le format FASTA */
 
 void get_module_number_from_user(int* module_number);
 
+int longueur_sequence(const char* path_input);
+
+int polarite(char aa);
+
+double pourct_id(double taille_seq, int nb_id);
+
 
 void transfo_fichier_Fasta(char* path_input);
 /* cette prodécure prend en argument un fichier et le remplace par un fichier contenant uniquement la 
