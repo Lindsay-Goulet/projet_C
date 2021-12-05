@@ -12,6 +12,8 @@ void save_sequence(const char* path_output, char* sequence);
 /* cette procédure écrit dans un fichier la séquence contenue dans la variable sequence en renvoyant à la ligne 
 tous les 80 caractères, comme dans le format FASTA */
 
+void get_module_number_from_user(int* module_number);
+
 
 void transfo_fichier_Fasta(char* path_input);
 /* cette prodécure prend en argument un fichier et le remplace par un fichier contenant uniquement la 
