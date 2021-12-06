@@ -2,7 +2,10 @@
 #include <stdlib.h>
 #include "utiles.h"
 
-void traduction(char* seq_arn, int taille_seq){
+void traduction(int taille_seq, char* seq_arn, char* seq_aa){
+    
+    int compteur_seq_aa=0;
+    
     for (int i=0; i<taille_seq-2; i++) {
         
         if (seq_arn[i]=='G') {
@@ -101,7 +104,7 @@ int main() {
 
     char seq_aa[taille_seq/3];
 
-    int compteur_seq_aa=0;
+    
 
 
 }
