@@ -1,9 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include 'utiles.h'
-
-#define nb_aa 64
-
+#include "utiles.h"
 
 int main() {
 
