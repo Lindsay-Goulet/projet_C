@@ -29,7 +29,7 @@ void module_transcription(const char* path_input, const char* path_output) {
     char sequence[taille_seq];
 	extract_sequence(path_input, sequence);
 
-    if (verification_sequence(path_input, sequence, taille_seq) == 1) {
+    if (verification_sequence(path_input, sequence, taille_seq) == 1 ) {
         transcription(sequence, taille_seq);
         save_sequence(path_output, sequence);
     }
