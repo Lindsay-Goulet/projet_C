@@ -2,18 +2,7 @@
 #include <stdlib.h>
 #include "utiles.h"
 
-int main() {
-
-    char path_input[30];
-
-    int taille_seq = longueur_sequence(path_input);
-    char seq_arn[taille_seq];
-    extract_sequence(path_input, seq_arn);
-
-    char seq_aa[taille_seq/3];
-
-    int compteur_seq_aa=0;
-
+void traduction(char* seq_arn, int taille_seq){
     for (int i=0; i<taille_seq-2; i++) {
         
         if (seq_arn[i]=='G') {
@@ -93,7 +82,26 @@ int main() {
                     seq_aa[compteur_seq_aa]='R'; /*AAA ou AAG = Arginine*/
             }
         }
+
     compteur_seq_aa++;
+    
+    if (seq_aa[compteur_seq_aa]=='*') 
+        break; /*Car c'est un codon STOP*/
     }
+}
+
+
+int main() {
+
+    char path_input[30];
+
+    int taille_seq = longueur_sequence(path_input);
+    char seq_arn[taille_seq];
+    extract_sequence(path_input, seq_arn);
+
+    char seq_aa[taille_seq/3];
+
+    int compteur_seq_aa=0;
+
 
 }
