@@ -57,7 +57,8 @@ int main() {
             break;
         }
             /* si aucun des 7 */
-        default:
+        default: {
             printf("Erreur ! Aucun module ne correspond à votre demande.\nRéessayez.\n\n");
+        }
     }
 }
