@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 void get_path_from_user(char* path_input) {
+/*Procédure qui permet à l'utilisateur d'entrer le fichier*/
 	printf("Saisissez le nom de votre fichier FASTA : ");
 	scanf("%40s", path_input);
 }
