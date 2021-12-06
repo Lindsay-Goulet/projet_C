@@ -29,10 +29,10 @@ void seq_id(int taille_seq, char* seq1, char* seq2, char* id) {
 	}
 }
 
-void module_score_id(const char* path_input, const char* path_input2) {
+void module_score_id() {
 
 	char path_input[30];
-    char path_output[30];
+    char path_input2[30];
 
 	get_path_from_user(path_input); /*on demande à l'utilisateur le fichier de la séquence à étudier*/
     printf("Avec quelle séquence voulez-vous comparer ?\n");
