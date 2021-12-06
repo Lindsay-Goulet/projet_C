@@ -24,16 +24,24 @@ int verification_sequence(const char* path_input, char* sequence, int taille_seq
     }
 }
 
-void module_transcription(const char* path_input, const char* path_output) {
+void module_transcription() {
+    char path_input[30];
+    char path_output[30];
+
+    get_path_from_user(path_input);
+    printf("Entrez le nom du fichier de votre séquence transcrite.\n");
+    get_path_from_user(path_output);
+
     int taille_seq = longueur_sequence(path_input);
     char sequence[taille_seq];
 	extract_sequence(path_input, sequence);
 
-    if (verification_sequence(path_input, sequence, taille_seq) == 1) {
+    if (verification_sequence(path_input, sequence, taille_seq) == 1 ) {
         transcription(sequence, taille_seq);
         save_sequence(path_output, sequence);
     }
     else {
-        printf("Erreur, séquence non codante.");
+        printf("Erreur, séquence non codante.\nDonnez un autre fichier.\n");
+        get_path_from_user(path_input);
     }
 }
