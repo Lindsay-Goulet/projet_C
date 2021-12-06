@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "utiles.h"
+/*#include "utiles.h"*/
 #include "module_transcription.h"
 #include "module_score_identite.h"
 #include "module_score_polarite.h"
 
 /* il faut #include tous nos fichiers .h*/
-
 
 int main() {
 	int module_number=0;
