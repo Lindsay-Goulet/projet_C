@@ -5,7 +5,7 @@ void transcription(char* sequence, int taille_seq);
 
 int verification_sequence(const char* path_input, char* sequence, int taille_seq);
 
-void module_transcription(const char* path_input, const char* path_output);
+void module_transcription();
 
 
 #endif
