@@ -36,12 +36,11 @@ void module_transcription() {
     char sequence[taille_seq];
 	extract_sequence(path_input, sequence);
 
-    if (verification_sequence(path_input, sequence, taille_seq) == 1 ) {
+    if (verification_sequence(path_input, sequence, taille_seq) == 1) {
         transcription(sequence, taille_seq);
         save_sequence(path_output, sequence);
     }
     else {
         printf("Erreur, séquence non codante.\nDonnez un autre fichier.\n");
-        get_path_from_user(path_input);
     }
 }

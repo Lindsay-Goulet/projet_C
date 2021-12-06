@@ -6,7 +6,6 @@
 #include "module_score_polarite.h"
 
 /* il faut #include tous nos fichiers .h*/
-/*cc*/
 
 int main() {
 	int module_number=0;
