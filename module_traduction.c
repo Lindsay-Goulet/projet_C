@@ -5,23 +5,19 @@
 
 #define nb_aa 64
 
-dict_aa () {
-    hcreate(nb_codon);
-    char codon[] = {"UUU", "UUC", "UUA", "UUG", "UCU", "UCC", "UCA", "UCG", "UAU", "UAC", "UAA", "UAG", "UGU", "UGC", "UGA", "UGG",
-                    "CUU", "CUC", "CUA", "CUG", "CCU", "CCC", "CCA", "CCG", "CAU", "CAC", "CAA", "CAG", "CGU", "CGC", "CGA", "CGG",
-                    "AUU", "AUC", "AUA", "AUG", "ACU", "ACC", 
 
+void dico_aa(){
 
-    }
-
+/*BONJOUR*/
 
 
 }
 
 
-
-
 int main() {
+
+    
+
 
 
 }
