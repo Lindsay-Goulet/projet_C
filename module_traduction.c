@@ -17,7 +17,7 @@ int main() {
 
     int compteur_seq_aa=0;
 
-    for (int i=0, i<taille_seq-2, i++) {
+    for (int i=0; i<taille_seq-2; i++) {
         
         if (tab[i]=="G") {
             if (tab[i+1]=="U") 
