@@ -32,7 +32,7 @@ int main() {
         }
 
         if (seq_arn[i]=='U'){
-            else if (seq_arn[i+1]=='G'){
+            if (seq_arn[i+1]=='G'){
                 if ((seq_arn[i+2]=='U') || (seq_arn[i+2]=='C'))
                     seq_aa[compteur_seq_aa]=='C'; /*UGU ou UGC = Cystéine*/
                 else if (seq_arn[i+2]=='A')
