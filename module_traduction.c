@@ -3,7 +3,7 @@
 #include "utiles.h"
 
 void traduction(int taille_seq, char* seq_arn, char* seq_aa){
-    
+/*Procédure qui permet de traduire une séquence d'ARN*/
     int compteur_seq_aa=0;
     
     for (int i=0; i<taille_seq-2; i++) {
@@ -94,9 +94,12 @@ void traduction(int taille_seq, char* seq_arn, char* seq_aa){
 }
 
 
-int main() {
-
+void module_traduction {
+/*Procédure qui permet de créer un nouveau fichier avec le brin traduit*/
     char path_input[30];
+    char path_output[30];
+
+    get_path_from_user(path_input); 
 
     int taille_seq = longueur_sequence(path_input);
     char seq_arn[taille_seq];
@@ -104,7 +107,6 @@ int main() {
 
     char seq_aa[taille_seq/3];
 
-    
-
-
+    traduction(taille_seq, seq_arn, seq_aa); /*Création de la séquence traduite*/
+    save_sequence(path_output, seq_aa); 
 }
