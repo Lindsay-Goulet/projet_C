@@ -7,15 +7,16 @@ void get_path_from_user(char* path_input) {
 }
 
 void get_module_number_from_user(int* module_number) {
-	do {
+
+	while (*module_number > 7 || *module_number < 1) {
         printf("\nQuel module voulez-vous utiliser ?\n1. Recherche de la séquence codante de taille maximale.\n2. Transcription d’une séquence ADN en séquence ARN.\n3. Traduction d’une séquence codante en séquence protéique.\n4. Calcul du score d’identité entre deux séquences.\n5. Calcul du score de similarité de polarité entre deux séquences protéiques.\n6. Recherche d’une séquence consensus à partir d’un alignement multiple.\n7. Recherche de la plus grande sous-chaîne de polarité commune à 2 séquences protéiques.\nModule : ");
         scanf("%d", module_number);
 	}
-	while (*module_number > 7 || *module_number < 1);
 }
 
 void extract_sequence(const char* path_input, char* sequence) {
-/* ajouter procédure qui supp ligne inutile */
+/*Procédure qui extrait la séquence du fichier pour la mettre dans un tableau séquence*/
+/*ajouter une procédure qui supp ligne inutile */
 	char ligne[82];
 	int i=0;
 	int j;
@@ -36,6 +37,7 @@ void extract_sequence(const char* path_input, char* sequence) {
 }
 
 void save_sequence(const char* path_output, char* sequence) {
+/*Procédure enregistre une séquence dans un nouveau fichier*/
     int i=0;
 
     FILE* f = fopen(path_output, "w"); /* ouverture du fichier*/
