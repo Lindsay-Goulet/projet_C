@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "utiles.h"
 #include "module_recherche_sequence_codante_maximale.h"
-/*#include "module_transcription.h"*/
+#include "module_transcription.h"
 #include "module_score_identite.h"
 #include "module_score_polarite.h"
 /*#include "module_traduction.h"*/
@@ -24,7 +24,7 @@ int main() {
                     break;
                 }
                 case 2: {
-                    /*module_transcription();*/
+                    module_transcription();
                     break;
                 }
                 case 3: {
