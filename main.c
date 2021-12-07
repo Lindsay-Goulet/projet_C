@@ -13,6 +13,7 @@ int main() {
     char rep;
     int module_number;
     do {
+    do {
         printf("Bonjour et bienvenue dans le logiciel d'analyse de séquences.\n");
 	    get_module_number_from_user(&module_number); /*on demande à l'utilisateur le module qu'il veut utiliser*/
 
@@ -51,9 +52,10 @@ int main() {
                 printf("Erreur ! Aucun module ne correspond à votre demande.\nRéessayez.\n\n");
             }
         }
-        printf("\nVoulez-vous utiliser un autre module ? (o/n)\n");
+    }
+    while (module_number > 7 || module_number < 1);
+    printf("\nVoulez-vous utiliser un autre module ? (o/n)\n");
         scanf("\n%c", &rep);
     }
-    while ((module_number > 7 || module_number < 1) && rep == 'o' );
-    
+    while (rep == 'o' );
 }
