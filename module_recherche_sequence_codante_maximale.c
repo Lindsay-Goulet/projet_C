@@ -132,8 +132,6 @@ void module_recherche_sequence_codante_maximale() {
     char path_output[30];
 
     get_path_from_user(path_input);
-    printf("Entrez le nom du fichier de votre séquence codante maximale.\n");
-    get_path_from_user(path_output);
 
     int taille_seq = longueur_sequence(path_input);
     char sequence[taille_seq+1];
@@ -145,12 +143,16 @@ void module_recherche_sequence_codante_maximale() {
 			
 	if (codante == 2) {
 		creation_sequence_ORF_sens(taille_seq_codante, sequence, start, stop, seq_cod);
+        printf("Entrez le nom du fichier de votre séquence codante maximale.\n");
+        get_path_from_user(path_output);
 		save_sequence(path_output, seq_cod);
 	}
 	else {
 		if (codante == 1) {
 			creation_sequence_ORF_antisens(taille_seq_codante, sequence, start, stop, seq_cod);
-			save_sequence(path_output, seq_cod);
+			printf("Entrez le nom du fichier de votre séquence codante maximale.\n");
+            get_path_from_user(path_output);
+            save_sequence(path_output, seq_cod);
 		}
 		else {
 			printf("Erreur. La séquence n'est pas codante.");
