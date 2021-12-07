@@ -18,7 +18,7 @@ void get_module_number_from_user(int* module_number) {
 void extract_sequence(const char* path_input, char* sequence) {
 /*Procédure qui extrait la séquence du fichier pour la mettre dans un tableau séquence*/
 /*ajouter une procédure qui supp ligne inutile */
-	char ligne[82];
+	char ligne[81];
 	int i=0;
 	int j;
     FILE* f = fopen(path_input, "r"); /* ouverture du fichier*/
@@ -28,11 +28,12 @@ void extract_sequence(const char* path_input, char* sequence) {
 		    }
     while (fgets(ligne, 81, f))  {
     	j=0;
-    	while (ligne[j] != '\0' && ligne[j] != '\n') {
+    	while (ligne[j] != '\n' && ligne[j] != '\0') {
 			sequence[i] = ligne[j];			
 			i++;
 			j++;
 		}
+
    }
    fclose(f);
 }
@@ -49,10 +50,11 @@ void save_sequence(const char* path_output, char* sequence) {
 	while (sequence[i] != '\0') { /*on parcourt toute la séquence stockée dans la variable séquence*/
         	fputc(sequence[i], f);
         	i++;
-        	if (i%80 == 0) { /*quand on arrive au 80e caractère, on passe à la ligne*/
+        	if ((i+1)%80 == 0) { /*quand on arrive au 80e caractère, on passe à la ligne*/
             		fprintf(f, "\n");
         	}
     }
+	fclose(f);
 }
 
 int longueur_sequence(const char* path_input) {
@@ -67,7 +69,7 @@ int longueur_sequence(const char* path_input) {
 	}
 
 	while (fscanf(f, "%lc", &c) != EOF) { /*je parcours tout le fichier et je compte les éléments*/
-		if (c != '\n') {
+		if (c != '\n' && c!= '\0') {
 			taille_seq++;
 		}
 	}
