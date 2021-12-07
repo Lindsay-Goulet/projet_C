@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "utiles.h"
-#include "module_sequence_codante_maximale.h"
+#include "module_recherche_sequence_codante_maximale.h"
 /*#include "module_transcription.h"*/
 #include "module_score_identite.h"
 #include "module_score_polarite.h"
