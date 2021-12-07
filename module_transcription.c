@@ -27,20 +27,27 @@ int verification_sequence(char* path_input, char* sequence, int taille_seq) {
 void module_transcription_sequence() {
     char path_input[30];
     char path_output[30];
+    int v;
 
-    get_path_from_user(path_input);
+    do {
 
-    int taille_seq = longueur_sequence(path_input);
-    char sequence[taille_seq];
-	extract_sequence(path_input, sequence);
+        get_path_from_user(path_input);
 
-    if (verification_sequence(path_input, sequence, taille_seq) == 1) {
-        printf("Entrez le nom du fichier de votre séquence transcrite.\n");
-        get_path_from_user(path_output);
-        transcription(sequence, taille_seq);
-        save_sequence(path_output, sequence);
+        int taille_seq = longueur_sequence(path_input);
+        char sequence[taille_seq];
+	    extract_sequence(path_input, sequence);
+
+        v = verification_sequence(path_input, sequence, taille_seq);
+
+        if (v == 1) {
+            printf("Entrez le nom du fichier de votre séquence transcrite.\n");
+            get_path_from_user(path_output);
+            transcription(sequence, taille_seq);
+            save_sequence(path_output, sequence);
+        }
+        else {
+            printf("Erreur, séquence non codante.\nDonnez un autre fichier.\n");
+        }
     }
-    else {
-        printf("Erreur, séquence non codante.\nDonnez un autre fichier.\n");
-    }
+    while(v == 0);
 }

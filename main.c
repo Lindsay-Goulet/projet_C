@@ -5,16 +5,16 @@
 #include "module_transcription.h"
 #include "module_score_identite.h"
 #include "module_score_polarite.h"
-/*#include "module_traduction.h"*/
+#include "module_traduction.h"
 
 /* il faut #include tous nos fichiers .h*/
 
 int main() {
     char rep;
     int module_number;
+    printf("Bonjour et bienvenue dans le logiciel d'analyse de séquences.\n");
     do {
         do {
-            printf("Bonjour et bienvenue dans le logiciel d'analyse de séquences.\n");
 	        get_module_number_from_user(&module_number); /*on demande à l'utilisateur le module qu'il veut utiliser*/
 
 	        switch(module_number)
@@ -28,7 +28,7 @@ int main() {
                     break;
                 }
                 case 3: {
-                    /*module_traduction;*/
+                    module_traduction_sequence();
                     break;
                 }
                     case 4: {

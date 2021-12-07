@@ -94,7 +94,7 @@ void traduction(int taille_seq, char* seq_arn, char* seq_aa){
 }
 
 
-void module_traduction() {
+void module_traduction_sequence() {
 /*Procédure qui permet de créer un nouveau fichier avec le brin traduit*/
     char path_input[30];
     char path_output[30];
