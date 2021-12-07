@@ -10,7 +10,7 @@
 /* il faut #include tous nos fichiers .h*/
 
 int main() {
-    char continue;
+    char c;
     do {
 	    int module_number=0;
         printf("Bonjour et bienvenue dans le logiciel d'analyse de séquences.\n");
@@ -52,8 +52,8 @@ int main() {
             }
         }
         printf("\nVoulez-vous utiliser un autre module ? (o/n)\n");
-        scanf("%c", &continue);
+        scanf("%c", &c);
     }
-    while (continue == 'o');
+    while (c == 'o');
     
 }
