@@ -30,7 +30,7 @@ void extract_sequence(const char* path_input, char* sequence) {
 			i++;
 			j++;
 		}
-
+	sequence[i] = '\0';
    }
    fclose(f);
 }

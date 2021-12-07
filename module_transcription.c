@@ -29,14 +29,14 @@ void module_transcription() {
     char path_output[30];
 
     get_path_from_user(path_input);
-    printf("Entrez le nom du fichier de votre séquence transcrite.\n");
-    get_path_from_user(path_output);
 
     int taille_seq = longueur_sequence(path_input);
     char sequence[taille_seq];
 	extract_sequence(path_input, sequence);
 
     if (verification_sequence(path_input, sequence, taille_seq) == 1) {
+        printf("Entrez le nom du fichier de votre séquence transcrite.\n");
+        get_path_from_user(path_output);
         transcription(sequence, taille_seq);
         save_sequence(path_output, sequence);
     }
