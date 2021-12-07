@@ -24,7 +24,7 @@ int main() {
             break;
         }
         case 3: {
-            module_traduction();
+            module_traduction;
             break;
         }
         case 4: {
