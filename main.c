@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "utiles.h"
-#include "module_transcription.h"
+#include "module_sequence_codante_maximale.h"
+/*#include "module_transcription.h"*/
 #include "module_score_identite.h"
 #include "module_score_polarite.h"
-#include "module_traduction.h"
+/*#include "module_traduction.h"*/
 
 /* il faut #include tous nos fichiers .h*/
 
@@ -16,16 +17,15 @@ int main() {
 	switch(module_number)
     {
         case 1: {
-            /*instruction*/;
+            module_recherche_sequence_codante_maximale();
             break;
         }
         case 2: {
             /*module_transcription();*/
-            module_transcription;
             break;
         }
         case 3: {
-            module_traduction;
+            /*module_traduction;*/
             break;
         }
         case 4: {
