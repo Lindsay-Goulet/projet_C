@@ -14,6 +14,3 @@ void creation_sequence_ORF_antisens(int taille_seq_codante, char* sequence, int 
 void module_recherche_sequence_codante_maximale();
 
 #endif
-
-
-#endif
