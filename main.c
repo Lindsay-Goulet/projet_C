@@ -54,6 +54,6 @@ int main() {
         printf("\nVoulez-vous utiliser un autre module ? (o/n)\n");
         scanf("\n%c", &rep);
     }
-    while (rep == 'o');
+    while ((*module_number > 7 || *module_number < 1) && rep == 'o' );
     
 }
