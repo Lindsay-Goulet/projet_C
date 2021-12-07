@@ -11,8 +11,8 @@
 
 int main() {
     char rep;
+    int module_number;
     do {
-	    int module_number=0;
         printf("Bonjour et bienvenue dans le logiciel d'analyse de séquences.\n");
 	    get_module_number_from_user(&module_number); /*on demande à l'utilisateur le module qu'il veut utiliser*/
 
