@@ -11,7 +11,7 @@ void transcription(char* sequence, int taille_seq) {
     }
 }
 
-int verification_sequence(const char* path_input, char* sequence, int taille_seq) {
+int verification_sequence(char* path_input, char* sequence, int taille_seq) {
     extract_sequence(path_input, sequence);
 
     if ((sequence[0] == 'A') && (sequence[1] == 'T') && (sequence[2] == 'G') && (taille_seq%3 == 0)) {
