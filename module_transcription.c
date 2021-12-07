@@ -24,7 +24,7 @@ int verification_sequence(char* path_input, char* sequence, int taille_seq) {
     }
 }
 
-void module_transcription() {
+void module_transcription_sequence() {
     char path_input[30];
     char path_output[30];
 
