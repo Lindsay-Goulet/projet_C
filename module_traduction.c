@@ -107,6 +107,6 @@ void module_traduction_sequence() {
 
     char seq_aa[taille_seq/3];
 
-    traduction(taille_seq, &seq_arn, &seq_aa); /*Création de la séquence traduite*/
+    traduction(taille_seq, seq_arn, seq_aa); /*Création de la séquence traduite*/
     save_sequence(path_output, seq_aa); 
 }
