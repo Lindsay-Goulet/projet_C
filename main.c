@@ -59,6 +59,6 @@ int main() {
     }
     while (rep == 'o' );
     if (rep == 'n') {
-        printf("Fin du programme");
+        printf("Fin du programme.\n");
     }
 }
