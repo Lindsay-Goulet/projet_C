@@ -58,4 +58,7 @@ int main() {
         scanf("\n%c", &rep);
     }
     while (rep == 'o' );
+    if (rep == 'n') {
+        printf("Fin du programme");
+    }
 }
