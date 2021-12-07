@@ -20,7 +20,7 @@ int main() {
             break;
         }
         case 2: {
-            module_transcription();
+            module_transcription;
             break;
         }
         case 3: {
