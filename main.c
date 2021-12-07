@@ -24,7 +24,7 @@ int main() {
                     break;
                 }
                 case 2: {
-                    module_transcription();
+                    module_transcription_sequence();
                     break;
                 }
                 case 3: {
