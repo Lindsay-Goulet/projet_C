@@ -52,7 +52,7 @@ int main() {
             }
         }
         printf("\nVoulez-vous utiliser un autre module ? (oui/non)\n");
-        scanf("%s", &rep);
+        scanf("%s", rep);
     }
     while (rep == 'oui');
     
