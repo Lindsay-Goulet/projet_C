@@ -52,7 +52,7 @@ int main() {
             }
         }
         printf("\nVoulez-vous utiliser un autre module ? (o/n)\n");
-        scanf("%c", &c);
+        scanf("%c", c);
     }
     while (c == 'o');
     
