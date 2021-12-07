@@ -10,79 +10,79 @@ void traduction(int taille_seq, char* seq_arn, char* seq_aa){
         
         if (seq_arn[i]=='G') {
             if (seq_arn[i+1]=='U') 
-                seq_aa[compteur_seq_aa]=='V'; /*GU% = Valine*/
+                *seq_aa[compteur_seq_aa]=='V'; /*GU% = Valine*/
             else if (seq_arn[i+1]=='C')
-                seq_aa[compteur_seq_aa]=='A'; /*GC% = Alanine*/
+                *seq_aa[compteur_seq_aa]=='A'; /*GC% = Alanine*/
             else if (seq_arn[i+1]=='A'){
                 if ((seq_arn[i+2]=='U') || (seq_arn[i+2]=='C'))
-                    seq_aa[compteur_seq_aa]=='D'; /*GAU ou GAC = Acide aspartique*/
+                    *seq_aa[compteur_seq_aa]=='D'; /*GAU ou GAC = Acide aspartique*/
                 else if ((seq_arn[i+2]=='A') || (seq_arn[i+2]=='G'))
-                    seq_aa[compteur_seq_aa]=='E'; /*GAA ou GAG = Acide glutamique*/
+                    *seq_aa[compteur_seq_aa]=='E'; /*GAA ou GAG = Acide glutamique*/
             }
             else if (seq_arn[i+1]=='G')
-                seq_aa[compteur_seq_aa]=='G'; /*GG% = Glycine*/
+                *seq_aa[compteur_seq_aa]=='G'; /*GG% = Glycine*/
         }
 
         if (seq_arn[i]=='U'){
             if (seq_arn[i+1]=='G'){
                 if ((seq_arn[i+2]=='U') || (seq_arn[i+2]=='C'))
-                    seq_aa[compteur_seq_aa]=='C'; /*UGU ou UGC = Cystéine*/
+                    *seq_aa[compteur_seq_aa]=='C'; /*UGU ou UGC = Cystéine*/
                 else if (seq_arn[i+2]=='A')
-                    seq_aa[compteur_seq_aa]=='*'; /*UGA = STOP*/
+                    *seq_aa[compteur_seq_aa]=='*'; /*UGA = STOP*/
                 else if (seq_arn[i+2]=='G')
-                    seq_aa[compteur_seq_aa]=='W'; /*UGG = Tryptophane*/
+                    *seq_aa[compteur_seq_aa]=='W'; /*UGG = Tryptophane*/
             }
             else if (seq_arn[i+1]=='C')
-                seq_aa[compteur_seq_aa]=='S'; /*UC% = Sérine*/
+                *seq_aa[compteur_seq_aa]=='S'; /*UC% = Sérine*/
             else if (seq_arn[i+1]=='U'){
                 if ((seq_arn[i+2]=='U') || (seq_arn[i+2]=='C'))
-                    seq_aa[compteur_seq_aa]=='F'; /*UUU ou UUC = Phénylalanine*/
+                    *seq_aa[compteur_seq_aa]=='F'; /*UUU ou UUC = Phénylalanine*/
                 else if ((seq_arn[i+2]=='A') || (seq_arn[i+2]=='G'))
-                    seq_aa[compteur_seq_aa]=='L'; /*UUA ou UUG = Leucine*/
+                    *seq_aa[compteur_seq_aa]=='L'; /*UUA ou UUG = Leucine*/
             }
             else if (seq_arn[i+1]=='A'){
                 if ((seq_arn[i+2]=='U') || (seq_arn[i+2]=='C'))
-                    seq_aa[compteur_seq_aa]=='Y'; /*UAU ou UAC = Tyrosine*/
+                    *seq_aa[compteur_seq_aa]=='Y'; /*UAU ou UAC = Tyrosine*/
                 else if ((seq_arn[i+2]=='A') || (seq_arn[i+2]=='G'))
-                    seq_aa[compteur_seq_aa]=='*'; /*UAA ou UAG = STOP*/
+                    *seq_aa[compteur_seq_aa]=='*'; /*UAA ou UAG = STOP*/
             } 
         }
 
         if (seq_arn[i]=='C'){
             if (seq_arn[i+1]=='U') 
-                seq_aa[compteur_seq_aa]='L'; /*CU% = Leucine*/
+                *seq_aa[compteur_seq_aa]='L'; /*CU% = Leucine*/
             else if (seq_arn[i+1]=='C')
-                seq_aa[compteur_seq_aa]='P'; /*CC% = Proline*/
+                *seq_aa[compteur_seq_aa]='P'; /*CC% = Proline*/
             else if (seq_arn[i+1]=='A'){
                 if ((seq_arn[i+2]=='U') || (seq_arn[i+2]=='C'))
-                    seq_aa[compteur_seq_aa]='H'; /*CAU ou CAC = Histidine*/
+                    *seq_aa[compteur_seq_aa]='H'; /*CAU ou CAC = Histidine*/
                 else if ((seq_arn[i+2]=='A') || (seq_arn[i+2]=='G'))
-                    seq_aa[compteur_seq_aa]='Q'; /*CAA ou CAG = Glutamine*/
+                    *seq_aa[compteur_seq_aa]='Q'; /*CAA ou CAG = Glutamine*/
             }
             else if (seq_arn[i+1]=='G')
-                seq_aa[compteur_seq_aa]='R'; /*CG% = Arginine*/
+                *seq_aa[compteur_seq_aa]='R'; /*CG% = Arginine*/
         }
 
         if (seq_arn[i]=='A'){
             if (seq_arn[i+1]=='U'){
                 if ((seq_arn[i+2]=='U') || (seq_arn[i+2]=='C') || (seq_arn[i+2]=='A'))
-                    seq_aa[compteur_seq_aa]='I'; /*AUU ou AUC ou AUA = Isoleucine*/
+                    *seq_aa[compteur_seq_aa]='I'; /*AUU ou AUC ou AUA = Isoleucine*/
                 else if (seq_arn[i+2]=='G')
-                    seq_aa[compteur_seq_aa]='M'; /*AUG = Méthionine*/
+                    *seq_aa[compteur_seq_aa]='M'; /*AUG = Méthionine*/
             }
             else if (seq_arn[i+1]=='C')
-                seq_aa[compteur_seq_aa]='T'; /*AC% = Thréonine*/
+                *seq_aa[compteur_seq_aa]='T'; /*AC% = Thréonine*/
             else if (seq_arn[i+1]=='A'){
                 if ((seq_arn[i+2]=='U') || (seq_arn[i+2]=='C'))
-                    seq_aa[compteur_seq_aa]='D'; /*AAU ou AAC = Acide aspartique*/
+                    *seq_aa[compteur_seq_aa]='D'; /*AAU ou AAC = Acide aspartique*/
                 else if ((seq_arn[i+2]=='A') || (seq_arn[i+2]=='G'))
-                    seq_aa[compteur_seq_aa]='K'; /*AAA ou AAG = Lysine*/
+                    *seq_aa[compteur_seq_aa]='K'; /*AAA ou AAG = Lysine*/
             }
             else if (seq_arn[i+1]=='G'){
                 if ((seq_arn[i+2]=='U') || (seq_arn[i+2]=='C'))
-                    seq_aa[compteur_seq_aa]='S'; /*AGU ou AGC = Sérine*/
+                    *seq_aa[compteur_seq_aa]='S'; /*AGU ou AGC = Sérine*/
                 else if ((seq_arn[i+2]=='A') || (seq_arn[i+2]=='G'))
-                    seq_aa[compteur_seq_aa]='R'; /*AAA ou AAG = Arginine*/
+                    *seq_aa[compteur_seq_aa]='R'; /*AAA ou AAG = Arginine*/
             }
         }
 
