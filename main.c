@@ -4,6 +4,7 @@
 #include "module_transcription.h"
 #include "module_score_identite.h"
 #include "module_score_polarite.h"
+#include "module_traduction.h"
 
 /* il faut #include tous nos fichiers .h*/
 
@@ -20,10 +21,11 @@ int main() {
         }
         case 2: {
             /*module_transcription();*/
+            module_transcription;
             break;
         }
         case 3: {
-            /*instruction*/;
+            module_traduction;
             break;
         }
         case 4: {
