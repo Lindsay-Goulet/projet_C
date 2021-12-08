@@ -88,3 +88,22 @@ double pourct_id(double taille_seq, int nb_id) {
 	return id;
 }
 
+int verification_sequence(char* path_input, char* sequence, int taille_seq) {
+    extract_sequence(path_input, sequence);
+
+    if ((sequence[0] == 'A') && ((sequence[1] == 'T') || (sequence[1] == 'U')) && (sequence[2] == 'G') 
+	&& (taille_seq%3 == 0) 
+	&& ((sequence[taille_seq-3] == 'T' && sequence[taille_seq-2] == 'G' && sequence[taille_seq-1] == 'A') 
+	|| (sequence[taille_seq-3] == 'T' && sequence[taille_seq-2] == 'A' && sequence[taille_seq-1] == 'A') 
+	|| (sequence[taille_seq-3] == 'T' && sequence[taille_seq-2] == 'A' && sequence[taille_seq-1] == 'G'))) {
+        return 1;
+/*ne pas oublier les U*/
+    }
+
+    else { 
+        return 0;
+    }
+}
+
+
+

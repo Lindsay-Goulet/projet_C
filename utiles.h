@@ -32,6 +32,6 @@ on donne un fichier du type :
 Et il remplace ce fichier par :
      ACTG.....ACTGACTG.....ACTG  */
 
-
+int verification_sequence(char* path_input, char* sequence, int taille_seq);
 
 #endif

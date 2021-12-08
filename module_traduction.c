@@ -6,29 +6,23 @@ void traduction(int taille_seq, char* seq_arn, char* seq_aa){
 /*Procédure qui permet de traduire une séquence d'ARN*/
     int compteur_seq_aa=0;
     
-    for (int i=0; i<taille_seq-2; i++) {
+    for (int i=0; i<taille_seq-2; i=i+3) {
         
         if (seq_arn[i]=='G') {
             if (seq_arn[i+1]=='U') 
                 seq_aa[compteur_seq_aa]='V'; /*GU% = Valine*/
-            else {
-                if (seq_arn[i+1]=='C')
-                    seq_aa[compteur_seq_aa]='A'; /*GC% = Alanine*/
-                else {
-                    if (seq_arn[i+1]=='A'){
-                        if ((seq_arn[i+2]=='U') || (seq_arn[i+2]=='C'))
-                            seq_aa[compteur_seq_aa]='D';  /*GAU ou GAC = Acide aspartique*/
-                        else {
-                            if ((seq_arn[i+2]=='A') || (seq_arn[i+2]=='G'))
-                                    seq_aa[compteur_seq_aa]='E'; /*GAA ou GAG = Acide glutamique*/
-                        }
-                    }    
-                    else {
-                        if (seq_arn[i+1]=='G')
-                            seq_aa[compteur_seq_aa]='G'; /*GG% = Glycine*/
-                    }         
-                }
+
+            else if (seq_arn[i+1]=='C')
+                seq_aa[compteur_seq_aa]='A'; /*GC% = Alanine*/
+
+            else if (seq_arn[i+1]=='A'){
+                if ((seq_arn[i+2]=='U') || (seq_arn[i+2]=='C'))
+                    seq_aa[compteur_seq_aa]='D'; /*GAU ou GAC = Acide aspartique*/
+                else if ((seq_arn[i+2]=='A') || (seq_arn[i+2]=='G'))
+                    seq_aa[compteur_seq_aa]='E'; /*GAA ou GAG = Acide glutamique*/
             }
+            else if (seq_arn[i+1]=='G')
+                seq_aa[compteur_seq_aa]='G'; /*GG% = Glycine*/
         }
 
         if (seq_arn[i]=='U'){
@@ -90,30 +84,44 @@ void traduction(int taille_seq, char* seq_arn, char* seq_aa){
                 if ((seq_arn[i+2]=='U') || (seq_arn[i+2]=='C'))
                     seq_aa[compteur_seq_aa]='S'; /*AGU ou AGC = Sérine*/
                 else if ((seq_arn[i+2]=='A') || (seq_arn[i+2]=='G'))
-                    seq_aa[compteur_seq_aa]='R'; /*AAA ou AAG = Arginine*/
+                    seq_aa[compteur_seq_aa]='R'; /*AGA ou AGG = Arginine*/
             }
         }
 
     compteur_seq_aa++;
-    
-    /*STOP voir while*/
     }
 }
 
 
 void module_traduction_sequence() {
 /*Procédure qui permet de créer un nouveau fichier avec le brin traduit*/
+
+/*STOP faire avec vérifseq dans utils*/
     char path_input[30];
     char path_output[30];
+    int v;
 
-    get_path_from_user(path_input); 
+    do {
+        get_path_from_user(path_input); /*Demande le fichier à traduire*/
 
-    int taille_seq = longueur_sequence(path_input);
-    char seq_arn[taille_seq];
-    extract_sequence(path_input, seq_arn);
+        int taille_seq = longueur_sequence(path_input); 
+        char seq_arn[taille_seq];
+        extract_sequence(path_input, seq_arn);
 
-    char seq_aa[taille_seq/3];
+        char seq_aa[taille_seq/3+1];
 
-    traduction(taille_seq, seq_arn, seq_aa); /*Création de la séquence traduite*/
-    save_sequence(path_output, seq_aa); 
+        v = verification_sequence(path_input, seq_arn, taille_seq);
+
+        if(v==1){
+        printf("Entrez le nom du fichier de votre séquence traduite.\n");
+        get_path_from_user(path_output);
+        traduction(taille_seq, seq_arn, seq_aa); /*Création de la séquence traduite*/
+        seq_aa[taille_seq/3]='\0';
+        save_sequence(path_output, seq_aa); 
+        }
+        else {
+            printf("Erreur, séquence non codante. \nDonnez un autre fichier.\n");
+        }
+    }
+    while(v==0);
 }

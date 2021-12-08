@@ -11,19 +11,6 @@ void transcription(char* sequence, int taille_seq) {
     }
 }
 
-int verification_sequence(char* path_input, char* sequence, int taille_seq) {
-    extract_sequence(path_input, sequence);
-
-    if ((sequence[0] == 'A') && (sequence[1] == 'T') && (sequence[2] == 'G') && (taille_seq%3 == 0)) {
-        return 1;
-
-    }
-
-    else { 
-        return 0;
-    }
-}
-
 void module_transcription_sequence() {
     char path_input[30];
     char path_output[30];
