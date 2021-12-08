@@ -96,8 +96,7 @@ void traduction(int taille_seq, char* seq_arn, char* seq_aa){
 
     compteur_seq_aa++;
     
-    if (seq_aa[compteur_seq_aa]=='*') 
-        break; /*Car c'est un codon STOP*/
+    /*STOP voir while*/
     }
 }
 
