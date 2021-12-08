@@ -10,22 +10,22 @@ void traduction(int taille_seq, char* seq_arn, char* seq_aa){
         
         if (seq_arn[i]=='G') {
             if (seq_arn[i+1]=='U') 
-                seq_aa[compteur_seq_aa]=='V'; /*GU% = Valine*/
+                seq_aa[compteur_seq_aa]='V'; /*GU% = Valine*/
             else {
                 if (seq_arn[i+1]=='C')
-                    seq_aa[compteur_seq_aa]=='A'; /*GC% = Alanine*/
+                    seq_aa[compteur_seq_aa]='A'; /*GC% = Alanine*/
                 else {
                     if (seq_arn[i+1]=='A'){
                         if ((seq_arn[i+2]=='U') || (seq_arn[i+2]=='C'))
-                            seq_aa[compteur_seq_aa]=='D';  /*GAU ou GAC = Acide aspartique*/
+                            seq_aa[compteur_seq_aa]='D';  /*GAU ou GAC = Acide aspartique*/
                         else {
                             if ((seq_arn[i+2]=='A') || (seq_arn[i+2]=='G'))
-                                    seq_aa[compteur_seq_aa]=='E'; /*GAA ou GAG = Acide glutamique*/
+                                    seq_aa[compteur_seq_aa]='E'; /*GAA ou GAG = Acide glutamique*/
                         }
                     }    
                     else {
                         if (seq_arn[i+1]=='G')
-                            seq_aa[compteur_seq_aa]=='G'; /*GG% = Glycine*/
+                            seq_aa[compteur_seq_aa]='G'; /*GG% = Glycine*/
                     }         
                 }
             }
