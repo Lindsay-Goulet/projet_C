@@ -166,6 +166,7 @@ void module_recherche_sequence_codante_maximale() {
 	int codante = codons_start_stop_ORF_max(sequence, taille_seq, &start, &stop, &taille_seq_codante); 
 	/*renvoie 2 si codant sur brin sens, 1 si codant sur brin antisens, 0 si non codant*/
 	char seq_cod[taille_seq_codante+1];
+	printf("Start = %d, Stop = %d\n", start, stop);
 
 	if (codante == 2) {
 		creation_sequence_ORF_sens(taille_seq_codante, sequence, start, stop, seq_cod);

@@ -25,11 +25,7 @@ void get_path_from_user(char* path_input) {
 }
 
 void get_module_number_from_user(char* module_number) {
-<<<<<<< HEAD
-	    printf("\nQuel module voulez-vous utiliser ?\n1. Recherche de la séquence codante de taille maximale.\n2. Transcription d’une séquence ADN en séquence ARN.\n3. Traduction d’une séquence codante en séquence protéique.\n4. Calcul du score d’identité entre deux séquences.\n5. Calcul du score de similarité de polarité entre deux séquences protéiques.\n6. Recherche d’une séquence consensus à partir d’un alignement multiple.\n7. Recherche de la plus grande sous-chaîne de polarité commune à 2 séquences protéiques.\nq : Quitter.\nModule : ");
-=======
-	    printf(CYN underscore "\nQuel module voulez-vous utiliser ?"RESET"\n1. Recherche de la séquence codante de taille maximale.\n2. Transcription d’une séquence ADN en séquence ARN.\n3. Traduction d’une séquence codante en séquence protéique.\n4. Calcul du score d’identité entre deux séquences.\n5. Calcul du score de similarité de polarité entre deux séquences protéiques.\n6. Recherche d’une séquence consensus à partir d’un alignement multiple.\n7. Recherche de la plus grande sous-chaîne de polarité commune à 2 séquences protéiques.\n"BLU blink bright"Module : "RESET);
->>>>>>> a1e2cbb8960112ba65343861d324004af5a44958
+	    printf(CYN underscore "\nQuel module voulez-vous utiliser ?"RESET"\n1. Recherche de la séquence codante de taille maximale.\n2. Transcription d’une séquence ADN en séquence ARN.\n3. Traduction d’une séquence codante en séquence protéique.\n4. Calcul du score d’identité entre deux séquences.\n5. Calcul du score de similarité de polarité entre deux séquences protéiques.\n6. Recherche d’une séquence consensus à partir d’un alignement multiple.\n7. Recherche de la plus grande sous-chaîne de polarité commune à 2 séquences protéiques.\nq : Quitter."BLU blink bright"Module : "RESET);
         scanf("\n%c", module_number);
 }
 
@@ -68,7 +64,7 @@ void save_sequence(const char* path_output, char* sequence) {
 	while (sequence[i] != '\0') { /*on parcourt toute la séquence stockée dans la variable séquence*/
         	fputc(sequence[i], f);
         	i++;
-        	if ((i+1)%80 == 0) { /*quand on arrive au 80e caractère, on passe à la ligne*/
+        	if ((i%80 == 0) { /*quand on arrive au 80e caractère, on passe à la ligne*/
             		fprintf(f, "\n");
         	}
     }
