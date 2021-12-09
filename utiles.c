@@ -29,7 +29,7 @@ void extract_sequence(const char* path_input, char* sequence) {
 	int j;
     FILE* f = fopen(path_input, "r"); /* ouverture du fichier*/
 	    	if (!f) {
-		    	printf("L'ouverture a echoué.\n");
+		    	printf("L'ouverture a échoué.\n");
 			    exit(EXIT_FAILURE);
 		    }
     while (fgets(ligne, 81, f))  {
@@ -50,7 +50,7 @@ void save_sequence(const char* path_output, char* sequence) {
 
     FILE* f = fopen(path_output, "w"); /* ouverture du fichier*/
 		if (!f) {
-			printf("L'ouverture a echoué.\n");
+			printf("L'ouverture a échoué.\n");
 			exit(EXIT_FAILURE);
 		}
 	while (sequence[i] != '\0') { /*on parcourt toute la séquence stockée dans la variable séquence*/
@@ -70,7 +70,7 @@ int longueur_sequence(const char* path_input) {
 
     FILE* f = fopen(path_input, "r"); /* ouverture du fichier*/
 	if (!f) {
-		printf("L'ouverture a echoué.\n");
+		printf("L'ouverture a échoué.\n");
 		exit(EXIT_FAILURE);
 	}
 
