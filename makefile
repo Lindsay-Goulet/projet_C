@@ -4,8 +4,8 @@ CFLAGS = -Wall
 
 all : log_analyse_seq 
 
-log_analyse_seq : utiles.o module_transcription.o module_traduction.o module_score_polarite.o module_score_identite.o module_recherche_sequence_codante_maximale.o main.o
-	$(CC) utiles.o module_transcription.o module_traduction.o module_score_polarite.o module_score_identite.o module_recherche_sequence_codante_maximale.o main.o -o log_analyse_seq
+log_analyse_seq : utiles.o module_transcription.o module_traduction.o module_score_polarite.o module_score_identite.o module_recherche_sequence_codante_maximale.o module_sequence_consensus.o main.o
+	$(CC) utiles.o module_transcription.o module_traduction.o module_score_polarite.o module_score_identite.o module_recherche_sequence_codante_maximale.o module_sequence_consensus.o main.o -o log_analyse_seq
 
 utiles.o : utiles.c 
 	$(CC) -c utiles.c $(CFLAGS)
