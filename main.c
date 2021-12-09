@@ -65,7 +65,7 @@ int main() {
                     break;
                 }
                 case '6': {
-                    /*instruction*/;
+                    module_recherche_sequence_consensus();
                     break;
                 }
                 case '7': {

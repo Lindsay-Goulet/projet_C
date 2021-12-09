@@ -10,9 +10,6 @@
 #define BLU   "\x1B[34m"
 
 /*
-module_sequence_consensus.o : module_sequence_consensus.c utiles.h
-	$(CC) -c module_sequence_consensus.c $(CFLAGS)
-
 module_recherche_sous_chaine_polarite.o : module_recherche_sous_chaine_polarite.c utiles.h
 	$(CC) -c module_sous_chaine_polarite.c $(CFLAGS)
 
@@ -34,8 +31,8 @@ void supp_premiere_ligne(const char* path_input) {
 	
 	FILE* f = fopen(path_input, "r"); /* ouverture du fichier*/
 		if (!f) {
-			/*printf(RED "L'ouverture a échoué.\n" RESET);*/
-			printf("L'ouverture a échoué.\n");
+			printf(RED "L'ouverture a échoué.\n" RESET);
+			
 			exit(EXIT_FAILURE);
 		}
 
@@ -44,8 +41,7 @@ void supp_premiere_ligne(const char* path_input) {
 		
 	FILE* f2 = fopen("fichier_temporaire.fa", "w"); /* ouverture du fichier*/
 		if (!f2) {
-			/*printf(RED "L'ouverture a échoué.\n" RESET);*/
-			printf("L'ouverture a échoué.\n");
+			printf(RED "L'ouverture a échoué.\n" RESET);
 			exit(EXIT_FAILURE);
 		}
 		
@@ -149,7 +145,7 @@ int verification_sequence(char* path_input, char* sequence, int taille_seq) {
 	|| ((sequence[taille_seq-3] == 'T' || sequence[taille_seq-3] == 'U') && sequence[taille_seq-2] == 'A' && sequence[taille_seq-1] == 'G'))
 	&& (taille_seq%3 == 0)) {
         return 1;
-/*ne pas oublier les U*/ /* C'EST FAIT !/*
+/*ne pas oublier les U*/ /* C'EST FAIT !*/
     }
 
     else { 
