@@ -45,8 +45,10 @@ void extract_sequences(const char* path_input, int long_seq, int nb_seq, char se
 		}
         
 	while ((el=fgetc(f)) != EOF) {
-		sequences[l][c] = el;
-		c++;
+        if (el != '\n') {
+		    sequences[l][c] = el;
+		    c++;
+        }
 		if (c==long_seq) {
 			c = 0;
 			l++;
@@ -78,15 +80,14 @@ void seq_consensus_par_position(char* seq_consensus, int position, int nb_seq, i
     else if (pG == 3) 
             seq_consensus[position] = 'G';
 
-    if (pA == 2 || pT == 2 || pC == 2 || pG == 2)
+    else if (pA == 2 || pT == 2 || pC == 2 || pG == 2)
         seq_consensus[position] = '*';
 
-    if (pA == 1 || pT == 1 || pC == 1 || pG == 1)
+    else if (pA == 1 || pT == 1 || pC == 1 || pG == 1)
         seq_consensus[position] = '-';
     
-    if (pA == 0|| pT == 0 || pC == 0 || pG == 0)
+    else if (pA == 0|| pT == 0 || pC == 0 || pG == 0)
         seq_consensus[position] = ' ';
-
    
 }
     
@@ -107,7 +108,7 @@ void sequence_consensus(int long_seq, int nb_seq, char sequences[nb_seq][long_se
             if (sequences[l][c] == 'A') nbA++;
             else if (sequences[l][c] == 'T') nbT++;
             else if (sequences[l][c] == 'C') nbC++;
-            else nbG++;
+            else if (sequences[l][c] == 'G') nbG++;
 
             seq_consensus_par_position(seq_consensus, c, nb_seq, nbA, nbT, nbG, nbC);
         }
