@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "utiles.h"
 
+#define RESET "\x1B[0m"
+#define RED   "\x1B[31m"
 
 int longueur_seq(const char* path_input) {
     int longueur_seq=0;
@@ -24,7 +26,7 @@ int nombre_sequences(const char* path_input) {
 			exit(EXIT_FAILURE);
 		}
 
-	while ((c = fgetc(f)) != 'EOF') 
+	while ((c = fgetc(f)) != EOF) 
         if (c == '\n') nombre_seq++;
 
 	return nombre_seq;
@@ -126,9 +128,9 @@ void module_recherche_sequence_consensus() {
     char sequences[nb_seq][long_seq];
     char seq_consensus[long_seq];
 
-    extract_sequences(path_input, long_seq, nb_seq);
+    extract_sequences(path_input, long_seq, nb_seq, sequences);
 
-    sequence_consensus(long_seq, nb_seq, sequences[nb_seq][long_seq], seq_consensus);
+    sequence_consensus(long_seq, nb_seq, sequences, seq_consensus);
 
     printf("Entrez le nom du fichier de votre séquence consensus.\n");
     get_path_from_user(path_output);
