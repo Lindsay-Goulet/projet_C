@@ -4,7 +4,7 @@
 #include "utiles.h"
 
 
-void codons_start_stop_brin_sens(char* sequence, int taille_seq, int* start, int* stop, int* longueur) {
+void codons_start_stop_brin_sens2(char* sequence, int taille_seq, int* start, int* stop, int* longueur) {
 	int i;
 	int j;
 	int st;
@@ -38,7 +38,7 @@ void codons_start_stop_brin_sens(char* sequence, int taille_seq, int* start, int
 	}
 }
 
-void codons_start_stop_brin_antisens(char* sequence, int taille_seq, int* start, int* stop, int* longueur) {
+void codons_start_stop_brin_antisens2(char* sequence, int taille_seq, int* start, int* stop, int* longueur) {
 	int i;
 	int j;
 	int st;
@@ -65,6 +65,73 @@ void codons_start_stop_brin_antisens(char* sequence, int taille_seq, int* start,
 
 			}
 		}
+	}
+}
+
+void codons_start_stop_brin_sens(char* sequence, int taille_seq, int* start, int* stop, int* longueur) {
+	int i;
+	int j;
+	int st;
+	int sp;
+	int l;
+	int longueur_maximale=0;
+	for (i=0; i<taille_seq-2; i++) { /*on parcourt la séquence*/
+		if ((sequence[i] == 'A') && (sequence[i+1] == 'T') && (sequence[i+2] == 'G')) { 
+			st = i;
+			j = st+3;
+			while ((j<taille_seq-2) && !(((sequence[j] == 'T' && sequence[j+1] == 'A' && sequence[j+2] == 'A') 
+			|| (sequence[j] == 'T' && sequence[j+1] == 'A' && sequence[j+2] == 'G') 
+			|| (sequence[j] == 'T' && sequence[j+1] == 'G' && sequence[j+2] == 'A'))))
+				j+=3;
+
+			if (((sequence[j] == 'T' && sequence[j+1] == 'A' && sequence[j+2] == 'A') 
+			|| (sequence[j] == 'T' && sequence[j+1] == 'A' && sequence[j+2] == 'G') 
+			|| (sequence[j] == 'T' && sequence[j+1] == 'G' && sequence[j+2] == 'A'))) {/*on a trouvé un codon stop*/
+				sp = j;
+
+				if ((l = abs(st-sp)+3) > longueur_maximale) {
+					longueur_maximale = l; /*on prend le couple start-stop ayant la plus grande longueur*/
+					*start = st; /*on modifie les valeurs de start et stop*/
+					*stop = sp;
+					*longueur = longueur_maximale;
+					
+				}
+			}
+		}	
+	}
+}
+
+void codons_start_stop_brin_antisens(char* sequence, int taille_seq, int* start, int* stop, int* longueur) {
+	int i;
+	int j;
+	int st;
+	int sp;
+	int l;
+	int longueur_maximale=0;
+	for (i=taille_seq-1; i>1; i--) { /*on parcourt la séquence*/
+		if ((sequence[i] == 'T') && (sequence[i-1] == 'A') && (sequence[i-2] == 'C')) { 
+			st = i;
+			j = st-3;
+			
+			while ((j>1) && !(((sequence[j] == 'A' && sequence[j-1] == 'T' && sequence[j-2] == 'T') 
+			|| (sequence[j] == 'A' && sequence[j-1] == 'T' && sequence[j-2] == 'C') 
+			|| (sequence[j] == 'A' && sequence[j-1] == 'C' && sequence[j-2] == 'T'))))
+				j-=3;
+
+			if (((sequence[j] == 'A' && sequence[j-1] == 'T' && sequence[j-2] == 'T') 
+			|| (sequence[j] == 'A' && sequence[j-1] == 'T' && sequence[j-2] == 'C') 
+			|| (sequence[j] == 'A' && sequence[j-1] == 'C' && sequence[j-2] == 'T'))) {/*on a trouvé un codon stop*/
+				sp = j;
+
+				if ((l = abs(st-sp)+3) > longueur_maximale) {
+					longueur_maximale = l; /*on prend le couple start-stop ayant la plus grande longueur*/
+					*start = st; /*on modifie les valeurs de start et stop*/
+					*stop = sp;
+					*longueur = longueur_maximale;
+					
+				}
+			}
+		}	
 	}
 }
 
