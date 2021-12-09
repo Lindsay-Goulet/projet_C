@@ -6,55 +6,66 @@
 
 void codons_start_stop_brin_sens(char* sequence, int taille_seq, int* start, int* stop, int* longueur) {
 	int i;
+	int j;
 	int st;
 	int sp;
 	int l;
 	int longueur_maximale=0;
 	for (i=0; i<taille_seq-2; i++) { /*on parcourt la séquence*/
 		if ((sequence[i] == 'A') && (sequence[i+1] == 'T') && (sequence[i+2] == 'G')) { /*on a trouvé un codon start*/
-			/*on cherche donc le codon stop le plus éloigné tq la distance entre les 2 est mutiple de 3*/
+			/*on cherche donc le codon stop le plus proche tq la distance entre les 2 est mutiple de 3*/
 			st = i; /*début de codon start*/
-			for (i=st+3; i<taille_seq-2;  i=i+3) {
-				if (((sequence[i] == 'T' && sequence[i+1] == 'A' && sequence[i+2] == 'A') || (sequence[i] == 'T' && sequence[i+1] == 'A' && sequence[i+2] == 'G') || (sequence[i] == 'T' && sequence[i+1] == 'G' && sequence[i+2] == 'A'))) {
-					sp=i; /*début du codon stop*/
-					if ((l = abs(st-sp)+3) > longueur_maximale) {
+			j = i+3;
+			while ((j<taille_seq-2) && ((sequence[i] == 'T' && sequence[i+1] == 'A' && sequence[i+2] == 'A') 
+			|| (sequence[i] == 'T' && sequence[i+1] == 'A' && sequence[i+2] == 'G') 
+			|| (sequence[i] == 'T' && sequence[i+1] == 'G' && sequence[i+2] == 'A'))) 
+				j+=3;
+
+			if (j!=taille_seq-2) /*on a trouvé un codon stop*/
+				sp = j;
+
+			if ((l = abs(st-sp)+3) > longueur_maximale) {
 						longueur_maximale = l; /*on prend le couple start-stop ayant la plus grande longueur*/
 						*start = st; /*on modifie les valeurs de start et stop*/
 						*stop = sp;
 						*longueur = longueur_maximale;
 			}
-				}
-			}
-		}
+		}	
 	}
 }
 
 void codons_start_stop_brin_antisens(char* sequence, int taille_seq, int* start, int* stop, int* longueur) {
 	int i;
+	int j;
 	int st;
 	int sp;
 	int l;
 	int longueur_maximale=0;
-	for (i=0; i<taille_seq-2; i++) { /*on parcourt la séquence*/
-		if (((sequence[i] == 'A' && sequence[i+1] == 'A' && sequence[i+2] == 'T') || (sequence[i] == 'G' && sequence[i+1] == 'A' 			&& sequence[i+2] == 'T') || (sequence[i] == 'A' && sequence[i+1] == 'G' && sequence[i+2] == 'T'))) { /*on a trouvé un codon stop*/
-			/*on cherche donc le codon start le plus éloigné tq la distance entre les 2 est mutiple de 3*/
-			sp = i+2; /*début de codon stop*/
-			
-			for (i=sp+1; i<taille_seq-2; i=i+3) {
-				if ((sequence[i] == 'G') && (sequence[i+1] == 'T') && (sequence[i+2] == 'A'))  {
-					st=i+2; /*début du codon start*/
-					if ((l = abs(st-sp)+3) > longueur_maximale) {
+	for (i=taille_seq-1; i<0; i--) { /*on parcourt la séquence*/
+		if ((sequence[i] == 'A') && (sequence[i-1] == 'T') && (sequence[i-2] == 'G')) { /*on a trouvé un codon start*/
+			/*on cherche donc le codon stop le plus proche tq la distance entre les 2 est mutiple de 3*/
+			st = i; /*début de codon start*/
+			j = i-3;
+			while ((j>0) && ((sequence[i] == 'T' && sequence[i-1] == 'A' && sequence[i-2] == 'A') 
+			|| (sequence[i] == 'T' && sequence[i-1] == 'A' && sequence[i-2] == 'G') 
+			|| (sequence[i] == 'T' && sequence[i-1] == 'G' && sequence[i-2] == 'A'))) 
+				j-=3;
+
+			if (j!=0) /*on a trouvé un codon stop*/
+				sp = j;
+
+			if ((l = abs(st-sp)+3) > longueur_maximale) {
 						longueur_maximale = l; /*on prend le couple start-stop ayant la plus grande longueur*/
 						*start = st; /*on modifie les valeurs de start et stop*/
 						*stop = sp;
 						*longueur = longueur_maximale;
-					}
-				}
 			}
-		}
-			
+		}	
 	}
 }
+
+
+
 
 int codons_start_stop_ORF_max(char* sequence, int taille_seq, int* start, int* stop, int* taille) {
 	int start_sens = -1;
