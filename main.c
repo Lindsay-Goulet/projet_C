@@ -11,7 +11,7 @@
 
 int main() {
     char rep;
-    int module_number;
+    char module_number;
     printf("Bonjour et bienvenue dans le logiciel d'analyse de séquences.\n");
     do {
         do {
@@ -19,31 +19,31 @@ int main() {
 
 	        switch(module_number)
             {
-                case 1: {
+                case '1': {
                     module_recherche_sequence_codante_maximale();
                     break;
                 }
-                case 2: {
+                case '2': {
                     module_transcription_sequence();
                     break;
                 }
-                case 3: {
+                case '3': {
                     module_traduction_sequence();
                     break;
                 }
-                    case 4: {
+                    case '4': {
 	                module_score_id();
                     break;
                 }
-                case 5: {
+                case '5': {
                     module_score_pol();
                     break;
                 }
-                case 6: {
+                case '6': {
                     /*instruction*/;
                     break;
                 }
-                case 7: {
+                case '7': {
                     /*instruction*/;
                     break;
                 }
@@ -53,7 +53,7 @@ int main() {
                 }
             }
         }
-        while (module_number > 7 || module_number < 1);
+        while (module_number > '7' || module_number < '1');
         printf("\nVoulez-vous utiliser un autre module ? (o/n)\n");
         scanf("\n%c", &rep);
     }
