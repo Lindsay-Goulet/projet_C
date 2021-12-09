@@ -28,8 +28,6 @@ module_recherche_sequence_codante_maximale.o : module_recherche_sequence_codante
 main.o : main.c utiles.h module_transcription.h module_traduction.h module_score_polarite.h module_score_identite.h module_recherche_sequence_codante_maximale.h
 	$(CC) -c main.c $(CFLAGS)
 
-
-
 clean :
 	rm -f *.o 
 
