@@ -20,8 +20,7 @@ int polarite(char aa);
 
 double pourct_id(double taille_seq, int nb_id);
 
-
-void transfo_fichier_Fasta(char* path_input);
+void supp_premiere_ligne(const char* path_input);
 /* cette prodécure prend en argument un fichier et le remplace par un fichier contenant uniquement la 
 sequence (une ligne). 
 Exemple : 

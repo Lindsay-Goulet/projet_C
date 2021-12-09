@@ -29,9 +29,44 @@ void get_module_number_from_user(char* module_number) {
         scanf("\n%c", module_number);
 }
 
+void supp_premiere_ligne(const char* path_input) {
+	int caractere_ligne=0;
+	
+	FILE* f = fopen(path_input, "r"); /* ouverture du fichier*/
+		if (!f) {
+			/*printf(RED "L'ouverture a échoué.\n" RESET);*/
+			printf("L'ouverture a échoué.\n");
+			exit(EXIT_FAILURE);
+		}
+
+	while (fgetc(f) != '\n') caractere_ligne++;
+	char ligne[caractere_ligne];
+		
+	FILE* f2 = fopen("fichier_temporaire.fa", "w"); /* ouverture du fichier*/
+		if (!f2) {
+			/*printf(RED "L'ouverture a échoué.\n" RESET);*/
+			printf("L'ouverture a échoué.\n");
+			exit(EXIT_FAILURE);
+		}
+		
+	while (fgets(ligne, caractere_ligne, f)) {
+		if (ligne[0] != '>') {
+			fputs(ligne, f2);
+		}
+	}
+			
+	fclose(f);
+	fclose(f2);
+	
+	remove(path_input);
+	rename("fichier_temporaire.fa", path_input);	
+}
+
 void extract_sequence(const char* path_input, char* sequence) {
 /*Procédure qui extrait la séquence du fichier pour la mettre dans un tableau séquence*/
 /*ajouter une procédure qui supp ligne inutile */
+	supp_premiere_ligne(path_input);
+
 	char ligne[81];
 	int i=0;
 	int j;
@@ -109,12 +144,12 @@ int verification_sequence(char* path_input, char* sequence, int taille_seq) {
     extract_sequence(path_input, sequence);
 
     if ((sequence[0] == 'A') && ((sequence[1] == 'T') || (sequence[1] == 'U')) && (sequence[2] == 'G') 
-	&& (taille_seq%3 == 0) 
-	&& ((sequence[taille_seq-3] == 'T' && sequence[taille_seq-2] == 'G' && sequence[taille_seq-1] == 'A') 
-	|| (sequence[taille_seq-3] == 'T' && sequence[taille_seq-2] == 'A' && sequence[taille_seq-1] == 'A') 
-	|| (sequence[taille_seq-3] == 'T' && sequence[taille_seq-2] == 'A' && sequence[taille_seq-1] == 'G'))) {
+	&& (((sequence[taille_seq-3] == 'T' || sequence[taille_seq-3] == 'U') && sequence[taille_seq-2] == 'G' && sequence[taille_seq-1] == 'A') 
+	|| ((sequence[taille_seq-3] == 'T' || sequence[taille_seq-3] == 'U') && sequence[taille_seq-2] == 'A' && sequence[taille_seq-1] == 'A') 
+	|| ((sequence[taille_seq-3] == 'T' || sequence[taille_seq-3] == 'U') && sequence[taille_seq-2] == 'A' && sequence[taille_seq-1] == 'G'))
+	&& (taille_seq%3 == 0)) {
         return 1;
-/*ne pas oublier les U*/
+/*ne pas oublier les U*/ /* C'EST FAIT !/*
     }
 
     else { 
