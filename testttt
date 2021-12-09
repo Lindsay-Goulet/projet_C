@@ -1,0 +1,27 @@
+ATGCCCTAA codante ne prend pas le stop
+
+ATGCCCTGA codante idem 
+
+ATGCCCTAG codante
+
+CTAGGGCAT codante dit pas codante
+
+TCAGGGCAT codante dit pas codante
+
+TTAGGGCAT codante 
+
+ATGCCCTTT non codante pas de stop  dit qu'elle est codante
+
+CCCTAAGGG non codante pas de start ok
+
+AAAGGGCAT non codante pas de stop  ok
+
+CCCTTAGG non codante pas de start ok
+
+ATGCCCTAACCCTAG codante avec 2 stop ok mais affiche pas le stop
+
+ATGCCTAA non codante NOOOOOOOOOOOON
+
+TAAGGGATG non codante
+
+ATGTAA codante

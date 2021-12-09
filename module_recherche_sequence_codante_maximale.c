@@ -1,72 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include "utiles.h"
-
-
-void codons_start_stop_brin_sens2(char* sequence, int taille_seq, int* start, int* stop, int* longueur) {
-	int i;
-	int j;
-	int st;
-	int sp;
-	int l;
-	int longueur_maximale=0;
-	for (i=0; i<taille_seq-2; i++) { /*on parcourt la séquence*/
-		if ((sequence[i] == 'A') && (sequence[i+1] == 'T') && (sequence[i+2] == 'G')) { /*on a trouvé un codon start*/
-			/*on cherche donc le codon stop le plus proche tq la distance entre les 2 est mutiple de 3*/
-			st = i; /*début de codon start*/
-			j = st+3;
-			while ((j<taille_seq-2) && ((sequence[j] != 'T' && sequence[j+1] != 'A' && sequence[j+2] != 'A') 
-			&& (sequence[j] != 'T' && sequence[j+1] != 'A' && sequence[j+2] != 'G') 
-			&& (sequence[j] != 'T' && sequence[j+1] != 'G' && sequence[j+2] != 'A')))
-				j+=3;
-
-			if (((sequence[j] == 'T' && sequence[j+1] == 'A' && sequence[j+2] == 'A') 
-			|| (sequence[j] == 'T' && sequence[j+1] == 'A' && sequence[j+2] == 'G') 
-			|| (sequence[j] == 'T' && sequence[j+1] == 'G' && sequence[j+2] == 'A'))) {/*on a trouvé un codon stop*/
-				sp = j;
-
-				if ((l = abs(st-sp)+3) > longueur_maximale) {
-					longueur_maximale = l; /*on prend le couple start-stop ayant la plus grande longueur*/
-					*start = st; /*on modifie les valeurs de start et stop*/
-					*stop = sp;
-					*longueur = longueur_maximale;
-					
-				}
-			}
-		}	
-	}
-}
-
-void codons_start_stop_brin_antisens2(char* sequence, int taille_seq, int* start, int* stop, int* longueur) {
-	int i;
-	int j;
-	int st;
-	int sp;
-	int l;
-	int longueur_maximale=0;
-	for (i=0; i<taille_seq-2; i++) { /*on parcourt la séquence*/
-		if (((sequence[i] == 'T' && sequence[i+1] == 'T' && sequence[i+2] == 'A')  /*on a trouvé un STOP*/
-			|| (sequence[i] == 'T' && sequence[i+1] == 'C' && sequence[i+2] == 'A') 
-			|| (sequence[i] == 'C' && sequence[i+1] == 'T' && sequence[i+2] == 'A'))) {
-			sp = i+2;
-			j = sp + 1;
-			while ((j < taille_seq-2) && ((sequence[i] != 'C') && (sequence[j+1] != 'A') && (sequence[j+2] != 'T')))
-				j+=3;
-				
-			if ((sequence[j] == 'C') && (sequence[j+1] == 'A') && (sequence[j+2] == 'T')) {
-				st = j+2; /*on a trouvé un START*/
-				if ((l = abs(st-sp)+3) > longueur_maximale) {
-						longueur_maximale = l; /*on prend le couple start-stop ayant la plus grande longueur*/
-						*start = st; /*on modifie les valeurs de start et stop*/
-						*stop = sp;
-						*longueur = longueur_maximale;
-					}
-
-			}
-		}
-	}
-}
 
 void codons_start_stop_brin_sens(char* sequence, int taille_seq, int* start, int* stop, int* longueur) {
 	int i;
@@ -232,7 +166,7 @@ void module_recherche_sequence_codante_maximale() {
 	int codante = codons_start_stop_ORF_max(sequence, taille_seq, &start, &stop, &taille_seq_codante); 
 	/*renvoie 2 si codant sur brin sens, 1 si codant sur brin antisens, 0 si non codant*/
 	char seq_cod[taille_seq_codante+1];
-	printf("start = %d, stop = %d", start, stop);
+
 	if (codante == 2) {
 		creation_sequence_ORF_sens(taille_seq_codante, sequence, start, stop, seq_cod);
         printf("Entrez le nom du fichier de votre séquence codante maximale.\n");

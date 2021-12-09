@@ -72,6 +72,10 @@ int main() {
                     /*instruction*/;
                     break;
                 }
+                case 'q' : {
+                    printf(bright MAG blink "Fin du programme. Merci à bientôt :)\n" RESET);
+                    exit(EXIT_FAILURE);
+                }
                 /* si aucun des 7 */
                 default: {
                     printf(RED "\nErreur ! Aucun module ne correspond à votre demande.\nRéessayez.\n\n" RESET );
