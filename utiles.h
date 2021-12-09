@@ -12,7 +12,7 @@ void save_sequence(const char* path_output, char* sequence);
 /* cette procédure écrit dans un fichier la séquence contenue dans la variable sequence en renvoyant à la ligne 
 tous les 80 caractères, comme dans le format FASTA */
 
-void get_module_number_from_user(int* module_number);
+void get_module_number_from_user(char* module_number);
 
 int longueur_sequence(const char* path_input);
 
