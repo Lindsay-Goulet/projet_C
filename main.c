@@ -37,8 +37,6 @@
 int main() {
     char rep;
     char module_number;
-    printf("Bonjour et bienvenue dans le logiciel d'analyse de séquences.\n");
-    char module_number;
     printf("\n\t\t\t"BGazure bright CYN "Bonjour et bienvenue dans le logiciel d'analyse de séquences." RESET "\n");
     do {
         do {
