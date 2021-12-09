@@ -36,13 +36,10 @@
 
 int main() {
     char rep;
-<<<<<<< HEAD
     char module_number;
     printf("Bonjour et bienvenue dans le logiciel d'analyse de séquences.\n");
-=======
-    int module_number;
+    char module_number;
     printf("\n\t\t\t"BGazure bright CYN "Bonjour et bienvenue dans le logiciel d'analyse de séquences." RESET "\n");
->>>>>>> 1eb85d2d27a3c15295888dec9eb443123d58af55
     do {
         do {
 	        get_module_number_from_user(&module_number); /*on demande à l'utilisateur le module qu'il veut utiliser*/
