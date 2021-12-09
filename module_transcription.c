@@ -2,6 +2,10 @@
 #include <stdlib.h>
 #include "utiles.h"
 
+#define RED   "\x1B[31m"
+#define CYN   "\x1B[36m"
+#define RESET "\x1B[0m"
+
 void transcription(char* sequence, int taille_seq) {
     int i;
     for (i=0; i<taille_seq; i++) {
@@ -27,13 +31,13 @@ void module_transcription_sequence() {
         v = verification_sequence(path_input, sequence, taille_seq);
 
         if (v == 1) {
-            printf("Entrez le nom du fichier de votre séquence transcrite.\n");
+            printf(CYN "Entrez le nom du fichier de votre séquence transcrite.\n" RESET);
             get_path_from_user(path_output);
             transcription(sequence, taille_seq);
             save_sequence(path_output, sequence);
         }
         else {
-            printf("Erreur, séquence non codante.\nDonnez un autre fichier.\n");
+            printf(RED "Erreur, séquence non codante.\nDonnez un autre fichier.\n" RESET);
         }
     }
     while(v == 0);

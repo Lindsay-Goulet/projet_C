@@ -20,3 +20,8 @@ notation.
 
 Le logiciel doit accueillir l’utilisateur avec un menu présentant les différents modules possibles, afin de lui permettre
 d’en choisir un.
+
+Pour utiliser notre logiciel :
+    - il faut se mettre dans le répertoire courant avec le terminal
+    - taper : make 
+    - taper ./log_analyse_seq
