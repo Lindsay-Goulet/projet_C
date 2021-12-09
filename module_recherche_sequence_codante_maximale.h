@@ -11,6 +11,8 @@ void creation_sequence_ORF_sens(int taille_seq_codante, char* sequence, int star
 
 void creation_sequence_ORF_antisens(int taille_seq_codante, char* sequence, int start, int stop, char* seq_cod);
 
+void sequence_complementaire(char * sequence, int taille_seq);
+
 void module_recherche_sequence_codante_maximale();
 
 #endif
