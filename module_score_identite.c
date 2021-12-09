@@ -2,7 +2,13 @@
 #include <stdlib.h>
 #include "utiles.h"
 
-
+#define CYN   "\x1B[36m"
+#define BLU   "\x1B[34m"
+#define MAG   "\x1B[35m"
+#define YEL   "\x1B[33m"
+#define RESET "\x1B[0m"
+#define underscore  "\x1b[4m"
+#define bright      "\x1b[1m"
 
 int nb_nucleotide_ident(char* sequence1, char* sequence2, int taille_seq) {
 	int i;
@@ -35,7 +41,7 @@ void module_score_id() {
     char path_input2[30];
 
 	get_path_from_user(path_input); /*on demande à l'utilisateur le fichier de la séquence à étudier*/
-    printf("Avec quelle séquence voulez-vous comparer ?\n");
+    printf(CYN "Avec quelle séquence voulez-vous comparer ?\n" RESET);
 	get_path_from_user(path_input2);
 
 	int i;
@@ -51,14 +57,14 @@ void module_score_id() {
 	char id[taille_seq];
 	seq_id(taille_seq, seq1, seq2, id); /* création de la seq id pour l'affichage*/
 
-	printf("Identité de séquence: %d/%d, soit %.2f %%.\n", ide, taille_seq, score);
-	printf("seq1\t");
+	printf("\n" underscore bright "Identité de séquence:" RESET " \t%d/%d, soit %.2f %%.\n", ide, taille_seq, score);
+	printf(BLU "seq1\t" RESET);
 
 	for (i=0; i<taille_seq; i++) { printf("%c", seq1[i]); } printf("\n"); /*affichage des seq*/
-	printf("seq2\t");
+	printf(MAG "seq2\t" RESET);
 
 	for (i=0; i<taille_seq; i++) { printf("%c", seq2[i]); } printf("\n");
-	printf("id\t");
+	printf(YEL "id\t" RESET);
 
 	for (i=0; i<taille_seq; i++) { printf("%c", id[i]); } printf("\n");
 }
