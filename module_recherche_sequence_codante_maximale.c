@@ -33,7 +33,7 @@ void codons_start_stop_brin_sens(char* sequence, int taille_seq, int* start, int
 		}	
 	}
 }
-
+/*test*/
 void codons_start_stop_brin_antisens(char* sequence, int taille_seq, int* start, int* stop, int* longueur) {
 	int i;
 	int j;
