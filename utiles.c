@@ -1,6 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/*
+module_sequence_consensus.o : module_sequence_consensus.c utiles.h
+	$(CC) -c module_sequence_consensus.c $(CFLAGS)
+
+module_recherche_sous_chaine_polarite.o : module_recherche_sous_chaine_polarite.c utiles.h
+	$(CC) -c module_sous_chaine_polarite.c $(CFLAGS)
+
+*/
+
 void get_path_from_user(char* path_input) {
 /*Procédure qui permet à l'utilisateur d'entrer le fichier*/
 	printf("Saisissez le nom de votre fichier FASTA : ");
