@@ -65,7 +65,6 @@ void creation_sous_chaine(char* sequence1, char* sous_chaine_1lettre, char* sous
     int i = 0;
     int j;
 
-
     for (j=debut_souschaine; j<debut_souschaine+taille_souschaine; j++) {
         sous_chaine_1lettre[i] = sequence1[j];
         sous_chaine_polarite[i] = polarite(sequence1[j])+'0';
@@ -90,6 +89,7 @@ void save_output(char* sequence1, char* sequence2, char* sous_chaine1_lettre, ch
     fprintf(f, "sequence1\t");
     i=0;
     while (sequence1[i] != '\0') {
+        printf("%c",sequence1[i]);
         fputc(sequence1[i], f);
         i++;
     }
@@ -101,7 +101,7 @@ void save_output(char* sequence1, char* sequence2, char* sous_chaine1_lettre, ch
         fputc(sequence2[i], f);
         i++;
     }
-    fprintf(f, "\n\nRecherche de la sous-chaîne maximale de la séquence 1 telle que la séquence 2 contient une série d’acides aminés de polarité identique: (0:hydrophile, 1:hydrophobe)\n\n");
+    fprintf(f, "\n\nRecherche de la sous-chaine maximale de la séquence 1 telle que la séquence 2 contient une série d'acides aminés de polarité identique: (0:hydrophile, 1:hydrophobe)\n\n");
     
     i=0;
     while (sous_chaine_3lettres[i] != '\0') {

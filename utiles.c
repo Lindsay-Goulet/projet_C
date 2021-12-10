@@ -56,7 +56,7 @@ void supp_premiere_ligne(const char* path_input) {
 void extract_sequence(const char* path_input, char* sequence) {
 /*Procédure qui extrait la séquence du fichier pour la mettre dans un tableau séquence*/
 /*ajouter une procédure qui supp ligne inutile */
-	supp_premiere_ligne(path_input);
+	/*supp_premiere_ligne(path_input);*/
 
 	char ligne[81];
 	int i=0;
