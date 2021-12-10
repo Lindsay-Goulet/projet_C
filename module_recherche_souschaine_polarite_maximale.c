@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "utiles.h"
 
+#define RED   "\x1B[31m"
 #define CYN   "\x1B[36m"
 #define BLU   "\x1B[34m"
 #define MAG   "\x1B[35m"
@@ -78,7 +79,7 @@ void save_output(char* sequence1, char* sequence2, char* sous_chaine1_lettre, ch
     char path_output[30];
     get_path_from_user(path_output);
 
-    FILE* f = fopen(path_input, "w"); /* ouverture du fichier*/
+    FILE* f = fopen(path_output, "w"); /* ouverture du fichier*/
 		if (!f) {
 			printf(RED "L'ouverture a échoué.\n" RESET);
 			
@@ -87,30 +88,39 @@ void save_output(char* sequence1, char* sequence2, char* sous_chaine1_lettre, ch
     
     int i;
     fprintf(f, "sequence1\t");
-    while (sequence1[i] != '\0' {
-        fprintf(f, sequence1[i]);
+    i=0;
+    while (sequence1[i] != '\0') {
+        fputc(sequence1[i], f);
+        i++;
     }
-    fprint("\n");
+    fprintf(f, "\n");
     
     fprintf(f, "sequence2\t");
-    while (sequence2[i] != '\0' {
-        fprintf(f, sequence2[i]);
+    i=0;
+    while (sequence2[i] != '\0') {
+        fputc(sequence2[i], f);
+        i++;
     }
-    fprint("\n\nRecherche de la sous-chaîne maximale de la séquence 1 telle que la séquence 2 contient
-une série d’acides aminés de polarité identique: (0:hydrophile, 1:hydrophobe)\n\n");
+    fprintf(f, "\n\nRecherche de la sous-chaîne maximale de la séquence 1 telle que la séquence 2 contient une série d’acides aminés de polarité identique: (0:hydrophile, 1:hydrophobe)\n\n");
     
-    while (sous_chaine_3lettres[i] != '\0' {
-        fprintf(f, sous_chaine_3lettres[i]);
+    i=0;
+    while (sous_chaine_3lettres[i] != '\0') {
+        fputc(sous_chaine_3lettres[i], f);
+        i++;
     }
-    fprint("\n");
+    fprintf(f, "\n");
 
-    while (sous_chaine1_lettre[i] != '\0' {
-        fprintf(f, sous_chaine1_lettre[i]);
+    i=0;
+    while (sous_chaine1_lettre[i] != '\0') {
+        fputc(sous_chaine1_lettre[i], f);
+        i++;
     }
-    fprint("\n");
+    fprintf(f, "\n");
 
-    while (sous_chaine_polarite[i] != '\0' {
-        fprintf(f, sous_chaine_polarite[i]);
+    i=0;
+    while (sous_chaine_polarite[i] != '\0') {
+        fputc(sous_chaine_polarite[i], f);
+        i++;
     }
     fclose(f);
 }
@@ -127,11 +137,11 @@ void module_sous_chaine_polarite_maximale() {
 
     int taille_seq1 = longueur_sequence(path_input); /*je recupère la longueur de la seq*/
 	char sequence1[taille_seq1];
-	extract_sequence(path_input, seq1); /* je stocke mes 2 seq dans 2 tableaux*/
+	extract_sequence(path_input, sequence1); /* je stocke mes 2 seq dans 2 tableaux*/
 	
     int taille_seq2 = longueur_sequence(path_input2);
     char sequence2[taille_seq2];
-	extract_sequence(path_input2, seq2);
+	extract_sequence(path_input2, sequence2);
 
 	char mat_alignement[taille_seq2 + 2][taille_seq1 + 2];
 
@@ -144,9 +154,9 @@ void module_sous_chaine_polarite_maximale() {
 	
 	char sous_chaine_1lettre[taille_souschaine+1];
     char sous_chaine_polarite[taille_souschaine+1];
-    char sous_chaine_3lettres[taille_souschaine*3+1]
-	creation_sous_chaine(sequence1, taille_seq1 sous_chaine_1lettre, sous_chaine_polarite, sous_chaine_3lettres, taille_souschaine, debut_souschaine);
+    char sous_chaine_3lettres[taille_souschaine*3+1];
+	creation_sous_chaine(sequence1, sous_chaine_1lettre, sous_chaine_polarite, sous_chaine_3lettres, taille_souschaine, debut_souschaine);
    
-    save_output(sequence1, sequence2, sous_chaine1_lettre, sous_chaine_polarite, sous_chaine_3lettres);
+    save_output(sequence1, sequence2, sous_chaine_1lettre, sous_chaine_polarite, sous_chaine_3lettres);
 }
 
