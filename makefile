@@ -4,8 +4,8 @@ CFLAGS = -Wall
 
 all : log_analyse_seq 
 
-log_analyse_seq : utiles.o module_transcription.o module_traduction.o module_score_polarite.o module_score_identite.o module_recherche_sequence_codante_maximale.o module_sequence_consensus.o main.o
-	$(CC) utiles.o module_transcription.o module_traduction.o module_score_polarite.o module_score_identite.o module_recherche_sequence_codante_maximale.o module_sequence_consensus.o main.o -o log_analyse_seq
+log_analyse_seq : utiles.o module_transcription.o module_traduction.o module_score_polarite.o module_score_identite.o module_recherche_sequence_codante_maximale.o module_sequence_consensus.o module_recherche_souschaine_polarite_maximale.o main.o
+	$(CC) utiles.o module_transcription.o module_traduction.o module_score_polarite.o module_score_identite.o module_recherche_sequence_codante_maximale.o module_sequence_consensus.o module_recherche_souschaine_polarite_maximale.o main.o -o log_analyse_seq
 
 utiles.o : utiles.c 
 	$(CC) -c utiles.c $(CFLAGS)
@@ -28,7 +28,10 @@ module_recherche_sequence_codante_maximale.o : module_recherche_sequence_codante
 module_sequence_consensus.o : module_sequence_consensus.c utiles.h
 	$(CC) -c module_sequence_consensus.c $(CFLAGS)
 
-main.o : main.c utiles.h module_transcription.h module_traduction.h module_score_polarite.h module_score_identite.h module_recherche_sequence_codante_maximale.h module_sequence_consensus.h
+module_recherche_souschaine_polarite_maximale.o : module_recherche_souschaine_polarite_maximale.c utiles.h
+	$(CC) -c module_recherche_souschaine_polarite_maximale.c $(CFLAGS)
+
+main.o : main.c utiles.h module_transcription.h module_traduction.h module_score_polarite.h module_score_identite.h module_recherche_sequence_codante_maximale.h module_sequence_consensus.h module_recherche_souschaine_polarite_maximale.h
 	$(CC) -c main.c $(CFLAGS)
 
 clean :
