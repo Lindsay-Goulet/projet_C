@@ -61,7 +61,7 @@ void trouver_souschaine_maximale(int taille_seq1, int taille_seq2, char mat_alig
 void creation_sous_chaine(char* sequence1, char* sous_chaine_1lettre, char* sous_chaine_polarite, char* sous_chaine_3lettres, int taille_souschaine, int debut_souschaine) {
     sous_chaine_1lettre[taille_souschaine] = '\0';
     sous_chaine_polarite[taille_souschaine] = '\0';
-    sous_chaine_1lettre[taille_souschaine*3] = '\0';
+    sous_chaine_3lettres[taille_souschaine*3] = '\0';
     int i = 0;
     int j;
 

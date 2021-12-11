@@ -32,7 +32,9 @@ void supp_premiere_ligne(const char* path_input) {
 		}
 
 	while (fgetc(f) != '\n') caractere_ligne++;
-	char ligne[caractere_ligne];
+	rewind(f);
+	int taille_ligne = max(caractere_ligne, 80);
+	char ligne[taille_ligne+1];
 		
 	FILE* f2 = fopen("fichier_temporaire.fa", "w"); /* ouverture du fichier*/
 		if (!f2) {
@@ -40,7 +42,7 @@ void supp_premiere_ligne(const char* path_input) {
 			exit(EXIT_FAILURE);
 		}
 		
-	while (fgets(ligne, caractere_ligne, f)) {
+	while (fgets(ligne, taille_ligne+1, f)) {
 		if (ligne[0] != '>') {
 			fputs(ligne, f2);
 		}
@@ -55,8 +57,8 @@ void supp_premiere_ligne(const char* path_input) {
 
 void extract_sequence(const char* path_input, char* sequence) {
 /*Procédure qui extrait la séquence du fichier pour la mettre dans un tableau séquence*/
-/*ajouter une procédure qui supp ligne inutile */
-	/*supp_premiere_ligne(path_input);*/
+
+	supp_premiere_ligne(path_input);
 
 	char ligne[81];
 	int i=0;
