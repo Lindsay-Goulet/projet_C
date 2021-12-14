@@ -1,0 +1,8 @@
+sequence1	MIITFHFVGEQITTATIQAVFSFLFFSFFFLDGVTLCLPRLECSGMISAHCNLCLLGPSD
+sequence2	HCAWPKEGFPYTKHSPSPSLNLPTTLEGRYCFWKMICPRPTADSTC
+
+Recherche de la sous-chaîne maximale de la séquence 1 telle que la séquence 2 contient une série d’acides aminés de polarité identique: (0:hydrophile, 1:hydrophobe)
+
+�q�^�
+FLDGVTLCL
+110110101

@@ -9,15 +9,10 @@
 #define bright      "\x1b[1m" 
 #define BLU   "\x1B[34m"
 
-/*
-module_recherche_sous_chaine_polarite.o : module_recherche_sous_chaine_polarite.c utiles.h
-	$(CC) -c module_sous_chaine_polarite.c $(CFLAGS)
-
-*/
 
 void get_path_from_user(char* path_input) {
 /*Procédure qui permet à l'utilisateur d'entrer le fichier*/
-	printf("Saisissez le nom de votre fichier FASTA : ");
+	printf("Saisissez le nom de votre fichier : ");
 	scanf("%40s", path_input);
 }
 
@@ -37,7 +32,9 @@ void supp_premiere_ligne(const char* path_input) {
 		}
 
 	while (fgetc(f) != '\n') caractere_ligne++;
-	char ligne[caractere_ligne];
+	rewind(f);
+	int taille_ligne = max(caractere_ligne, 80);
+	char ligne[taille_ligne+1];
 		
 	FILE* f2 = fopen("fichier_temporaire.fa", "w"); /* ouverture du fichier*/
 		if (!f2) {
@@ -45,7 +42,7 @@ void supp_premiere_ligne(const char* path_input) {
 			exit(EXIT_FAILURE);
 		}
 		
-	while (fgets(ligne, caractere_ligne, f)) {
+	while (fgets(ligne, taille_ligne+1, f)) {
 		if (ligne[0] != '>') {
 			fputs(ligne, f2);
 		}
@@ -60,7 +57,7 @@ void supp_premiere_ligne(const char* path_input) {
 
 void extract_sequence(const char* path_input, char* sequence) {
 /*Procédure qui extrait la séquence du fichier pour la mettre dans un tableau séquence*/
-/*ajouter une procédure qui supp ligne inutile */
+
 	supp_premiere_ligne(path_input);
 
 	char ligne[81];

@@ -70,7 +70,7 @@ int main() {
                     break;
                 }
                 case '7': {
-                    /*instruction*/;
+                    module_sous_chaine_polarite_maximale();
                     break;
                 }
                 case 'q' : {
