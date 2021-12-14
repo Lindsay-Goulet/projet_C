@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define max(a,b) (a>=b?a:b)
+
 #define underscore  "\x1b[4m" /*Souligné*/
 #define blink       "\x1b[5m" /*Clignotant*/
 #define CYN   "\x1B[36m"
@@ -12,7 +14,7 @@
 
 void get_path_from_user(char* path_input) {
 /*Procédure qui permet à l'utilisateur d'entrer le fichier*/
-	printf("Saisissez le nom de votre fichier : ");
+	printf(CYN "Saisissez le nom de votre fichier : " RESET);
 	scanf("%40s", path_input);
 }
 

@@ -2,6 +2,11 @@
 #include <stdlib.h>
 #include "utiles.h"
 
+#define CYN   "\x1B[36m"
+#define RESET "\x1B[0m"
+#define RED   "\x1B[31m"
+#define BLU   "\x1B[34m"
+
 void codons_start_stop_brin_sens(char* sequence, int taille_seq, int* start, int* stop, int* longueur) {
 	//Procédure qui permet de trouver le couple de codons START et STOP de la séquence ADN dans le brin sens de la plus grande longueur
 
@@ -163,7 +168,6 @@ void creation_sequence_ORF_antisens(int taille_seq_codante, char* sequence, int 
 	seq_cod[taille_seq_codante] = '\0';
 }
 
-
 void module_recherche_sequence_codante_maximale() {
 	/* - Procédure qui demande en entrée un fichier contenant une séquence ADN au format FASTA.
 	   - Recherche dans la séquence ADN la plus grande séquence codante
@@ -184,23 +188,28 @@ void module_recherche_sequence_codante_maximale() {
 	
 	int codante = codons_start_stop_ORF_max(sequence, taille_seq, &start, &stop, &taille_seq_codante); //Renvoie 2 si codant sur brin sens, 1 si codant sur brin antisens, 0 si non codant
 	char seq_cod[taille_seq_codante+1];
-	printf("Start = %d, Stop = %d\n", start, stop);
+	printf("Start = %d, Stop = %d\n", start, stop); //Permet d'afficher où se trouve le codon START et le codon STOP
 
+	//Si l'ORF se trouve sur le brin sens
 	if (codante == 2) {
 		creation_sequence_ORF_sens(taille_seq_codante, sequence, start, stop, seq_cod);
-        printf("Entrez le nom du fichier de votre séquence codante maximale.\n");
+        printf(BLU "Entrez le nom du fichier de votre séquence codante maximale.\n" RESET);
         get_path_from_user(path_output);
 		save_sequence(path_output, seq_cod);
 	}
+
+	//Si l'ORF se trouve sur le brin antisens
 	else {
 		if (codante == 1) {
 			creation_sequence_ORF_antisens(taille_seq_codante, sequence, start, stop, seq_cod);
-			printf("Entrez le nom du fichier de votre séquence codante maximale.\n");
+			printf(BLU "Entrez le nom du fichier de votre séquence codante maximale.\n" RESET);
             get_path_from_user(path_output);
             save_sequence(path_output, seq_cod);
 		}
+
+		//Si codante==0 et donc qu'aucun ORF n'a été trouvé (séquence non codante)
 		else {
-			printf("Erreur. La séquence n'est pas codante.");
+			printf(RED "Erreur. La séquence n'est pas codante." RESET);
 		}
 	}
 }
