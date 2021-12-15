@@ -3,6 +3,7 @@
 
 #define max(a,b) (a>=b?a:b)
 
+//Permet de mettre de changer l'affichage dans le terminal :
 #define underscore  "\x1b[4m" /*Souligné*/
 #define blink       "\x1b[5m" /*Clignotant*/
 #define CYN   "\x1B[36m"
@@ -39,7 +40,7 @@ void supp_premiere_ligne(const char* path_input) {
 		}
 
 	while (fgetc(f) != '\n') caractere_ligne++;
-	rewind(f);
+	rewind(f); //Permet de revenir au début du fichier pour ensuite supprimer la ligne d'information
 	int taille_ligne = max(caractere_ligne, 80);
 	char ligne[taille_ligne+1];
 		

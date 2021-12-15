@@ -2,21 +2,25 @@
 #include <stdlib.h>
 #include "utiles.h"
 
+//Permet de mettre de changer l'affichage dans le terminal :
 #define CYN   "\x1B[36m"
 #define YEL   "\x1B[33m"
 #define BLU   "\x1B[34m"
 #define MAG   "\x1B[35m"
 #define RESET "\x1B[0m"
 #define bright "\x1b[1m"
-#define underscore  "\x1b[4m" /*Souligné*/
+#define underscore  "\x1b[4m" 
 
 int nb_aa_polarite(int taille_seq, char* sequence1, char* sequence2) {
+	//Fonction qui permet de compter entre deux séquences le nb d'aa de polarité identique
+	
 	int i;
 	int nb_ide=0;
 	for (i=0; i<taille_seq; i++) { 
-		if (polarite(sequence1[i]) != -9) { /*si l'aa n'est pas "-"*/
-			if (polarite(sequence1[i]) == polarite(sequence2[i])) { /*je parcours mes séq et je compte le nb de différence entre les deux */
-				nb_ide++;
+		if (polarite(sequence1[i]) != -9) { //Utilisation d'une fonction de utiles.c qui renvoie 1 si aa polaire et 0 sinon;
+		//Si GAP polarité = -9, comme ça on regarde les polarités sans les GAP
+			if (polarite(sequence1[i]) == polarite(sequence2[i])) { //Parcours les séq et compte le nb de différence entre les deux
+				nb_ide++; //Compteur
 			}
 		}
 	}
@@ -24,10 +28,11 @@ int nb_aa_polarite(int taille_seq, char* sequence1, char* sequence2) {
 }
 
 void seq_id_pol(int taille_seq, char* sequence1, char* sequence2, char* id) {
+
 	int i;
     int p;
 	for (i=0; i<taille_seq; i++) {
-		if ((p=polarite(sequence1[i])) == polarite(sequence2[i])) { /*ça c'est pour écrire les séq dans le terminal. Je créé ma seq "id" donc je mets le nucléo quand il est identique et sinon je mets un - */
+		if ((p=polarite(sequence1[i])) == polarite(sequence2[i])) { //Pour écrire les séq dans le terminal. Création de la seq "id" donc je mets le nucléo quand il est identique et sinon je mets un - */
 			id[i] = p+'0';
 		}
 		else {
