@@ -137,12 +137,6 @@ int polarite(char aa) {
 		return 1; //Retourne aa apolaire
 }
 
-double pourct_id(double taille_seq, int nb_id) {
-	//Fonction qui renvoie le pourcentage d'identité
-	double id = nb_id*100/taille_seq; //Produit en croix pour calculer le pourcentage
-	return id;
-}
-
 int verification_sequence(char* path_input, char* sequence, int taille_seq) {
 	//Fonction qui renvoie 1 si la séquence est codante et 0 sinon.
     extract_sequence(path_input, sequence);

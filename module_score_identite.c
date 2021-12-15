@@ -57,7 +57,7 @@ void module_score_id() {
 	extract_sequence(path_input2, seq2); //Permet de stocker la deuxième séquence dans un tableau
 	
 	int ide = nb_nucleotide_ident(seq1, seq2, taille_seq); //Recupère le nb de nucléotides identiques entre les deux séquences 
-	double score = pourct_id(taille_seq, ide); //Conversion en % de l'identité de séquence
+	double score = ide*100/taille_seq;//Conversion en % de l'identité de séquence
 	char id[taille_seq];
 	seq_id(taille_seq, seq1, seq2, id); //Création de la seq id pour l'affichage
 

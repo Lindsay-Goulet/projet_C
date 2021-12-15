@@ -28,46 +28,52 @@ int nb_aa_polarite(int taille_seq, char* sequence1, char* sequence2) {
 }
 
 void seq_id_pol(int taille_seq, char* sequence1, char* sequence2, char* id) {
+	//Procédure qui permet 
 
 	int i;
     int p;
 	for (i=0; i<taille_seq; i++) {
-		if ((p=polarite(sequence1[i])) == polarite(sequence2[i])) { //Pour écrire les séq dans le terminal. Création de la seq "id" donc je mets le nucléo quand il est identique et sinon je mets un - */
-			id[i] = p+'0';
+		if ((p=polarite(sequence1[i])) == polarite(sequence2[i])) { //Création de la seq "id" qui s'affichera dans le terminal afin de voir la comparaison de polarité des deux séquences.
+			id[i] = p+'0'; //Convertir des int en char avec p qui peut être 0 si hydrophiles et 1 si hydrophobes
 		}
 		else {
-			id[i] = '-';
+			id[i] = '-'; //- si pas la même polarité
 		}
 	}
 }
 
 
 void module_score_pol() {
+	/* - Procédure qui demande à l'utilisateur deux fichiers contenant chacune une séquence.
+	   - Les séquences doivent être de même taille. 
+	   - Ce module permet de comparer la polarité des deux séquences.*/
+
 	char path_input[30];
     char path_input2[30];
 
-	get_path_from_user(path_input); /*on demande à l'utilisateur le fichier de la séquence à étudier*/
+	get_path_from_user(path_input); //On demande à l'utilisateur le fichier de la première séquence à étudier
     printf(CYN "Avec quelle séquence voulez-vous comparer ?\n" RESET);
-	get_path_from_user(path_input2);
-
-	int i;
+	get_path_from_user(path_input2); //On demande à l'utilisateur le fichier de la deuxième séquence à étudier
 	
-	int taille_seq = longueur_sequence(path_input); /*je recupère la longueur de la seq*/
+	int taille_seq = longueur_sequence(path_input); //Récupère la longueur de la seq
 	char seq1[taille_seq];
-	extract_sequence(path_input, seq1); /* je stocke mes 2 seq dans 2 tableaux*/
+	extract_sequence(path_input, seq1); //Stocke les 2 seq dans 2 tableaux
 	char seq2[taille_seq];
 	extract_sequence(path_input2, seq2);
 	
-	int ide = nb_aa_polarite(taille_seq, seq1, seq2); /* je compte les diff*/
-	double score = pourct_id(taille_seq, ide); /*conversion en %*/
+	int ide = nb_aa_polarite(taille_seq, seq1, seq2); //Compte les polarités identiques
+	double score = ide*100/taille_seq;  //Conversion en %
 	char id[taille_seq];
-	seq_id_pol(taille_seq, seq1, seq2, id); /* création de la seq id pour l'affichage*/
+	seq_id_pol(taille_seq, seq1, seq2, id); //Création de la seq id pour l'affichage
 
 	printf("\n" bright underscore "Similarité de polarité: " RESET "\t%d/%d, soit %.2f %%.\n", ide, taille_seq, score);
 	printf("0 : hydrophiles, 1 : hydrophobes, - : différents\n");
 	printf(BLU "seq1\t" RESET);
 
-	for (i=0; i<taille_seq; i++) { printf("%c", seq1[i]); } printf("\n"); /*affichage des seq*/
+	int i; //Compteur pour l'affichage de chaque élément
+
+	//Affichage des deux séquences et de la séquence "id" qui compare les polarités.
+	for (i=0; i<taille_seq; i++) { printf("%c", seq1[i]); } printf("\n"); 
 	printf(MAG "seq2\t" RESET);
 
 	for (i=0; i<taille_seq; i++) { printf("%c", seq2[i]); } printf("\n");
