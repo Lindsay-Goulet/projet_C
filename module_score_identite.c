@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "utiles.h"
 
+//Permet de mettre de changer l'affichage dans le terminal :
 #define CYN   "\x1B[36m"
 #define BLU   "\x1B[34m"
 #define MAG   "\x1B[35m"

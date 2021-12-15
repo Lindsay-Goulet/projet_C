@@ -28,7 +28,7 @@ int nb_aa_polarite(int taille_seq, char* sequence1, char* sequence2) {
 }
 
 void seq_id_pol(int taille_seq, char* sequence1, char* sequence2, char* id) {
-	//Procédure qui permet 
+	//Procédure qui permet d'écrire dans le terminal la comparaison de polarité des deux séquences
 
 	int i;
     int p;
