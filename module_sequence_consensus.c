@@ -105,7 +105,7 @@ void seq_consensus_par_position(char* seq_consensus, int position, int nb_seq, i
 }
     
 void sequence_consensus(int long_seq, int nb_seq, char sequences[nb_seq][long_seq], char* seq_consensus) {
-    //Procédure qui permet de construire et d'afficher dans le terminal la séquence consensus 
+    //Procédure qui permet de construire et d'afficher dans le nouveau fichier la séquence consensus 
     
     int l; //Compteur de colonnes
     
@@ -138,7 +138,9 @@ void sequence_consensus(int long_seq, int nb_seq, char sequences[nb_seq][long_se
 }
 
 void module_recherche_sequence_consensus() {
-    
+/* - Procédure qui demande en entrée un fichier contenant un alignement de séquences au format FASTA.
+   - Regarde le pourcentage d'identité pour chaque position de l'alignement
+   - Et renvoie un caractère en fonction du pourcentage.*/ 
 
     char path_input[30];
     char path_output[30];

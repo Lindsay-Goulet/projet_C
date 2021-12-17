@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "utiles.h"
 
+//Permet de mettre de changer l'affichage dans le terminal :
 #define RED   "\x1B[31m"
 #define CYN   "\x1B[36m"
 #define BLU   "\x1B[34m"
@@ -12,6 +13,8 @@
 #define bright      "\x1b[1m"
 
 void matrice_alignement(char* sequence1, char* sequence2, int taille_seq1, int taille_seq2, char mat_alignement[taille_seq2+2][taille_seq1+2]) {
+    //Procédure 
+    
     int i;
     int j;
     
@@ -20,19 +23,19 @@ void matrice_alignement(char* sequence1, char* sequence2, int taille_seq1, int t
     mat_alignement[0][1] = '0';
     mat_alignement[1][0] = '0';
 
-    for (j=2; j<taille_seq1+2; j++) { /*on met la polarite sequence 1 sur la première ligne de la matrice*/
+    for (j=2; j<taille_seq1+2; j++) { //On met la polarite sequence 1 sur la première ligne de la matrice
         mat_alignement[0][j] = polarite(sequence1[j-2])+'0';
         mat_alignement[1][j] = '0';
     }
-    for (i=2; i<taille_seq2+2; i++) { /*on met la polarite de la sequence 2 sur la première colonne de la matrice*/
+    for (i=2; i<taille_seq2+2; i++) { //On met la polarite de la sequence 2 sur la première colonne de la matrice
         mat_alignement[i][0] = polarite(sequence2[i-2])+'0';
         mat_alignement[i][1] = '0';
     }
 
-    for (i=2; i<taille_seq2+2; i++) { /*on parcourt la matrice*/
+    for (i=2; i<taille_seq2+2; i++) { //On parcourt la matrice
         for (j=2; j<taille_seq1+2; j++) {
             if (mat_alignement[i][0] == mat_alignement[0][j]) { 
-            	/*pour chaque position, si seq1=seq2, alors on augmente de 1*/
+            	//Pour chaque position, si seq1=seq2, alors on augmente de 1*/
                 mat_alignement[i][j] = mat_alignement[i-1][j-1]+1;
             }
             else mat_alignement[i][j] = '0';
@@ -41,11 +44,13 @@ void matrice_alignement(char* sequence1, char* sequence2, int taille_seq1, int t
 }
 
 void trouver_souschaine_maximale(int taille_seq1, int taille_seq2, char mat_alignement[taille_seq2+2][taille_seq1+2], int* taille_souschaine, int* debut_souschaine) {
+    //Procédure
+    
     int i;
     int j;
     char taille='0';
     int debut=-1;
-    for (i=2; i<taille_seq2+2; i++) { /*on parcourt la matrice*/
+    for (i=2; i<taille_seq2+2; i++) { //On parcourt la matrice
         for (j=2; j<taille_seq1+2; j++) {
             if (mat_alignement[i][j] > taille) {
             	taille = mat_alignement[i][j];
@@ -59,6 +64,8 @@ void trouver_souschaine_maximale(int taille_seq1, int taille_seq2, char mat_alig
 }
     
 void creation_sous_chaine(char* sequence1, char* sous_chaine_1lettre, char* sous_chaine_polarite, char* sous_chaine_3lettres, int taille_souschaine, int debut_souschaine) {
+    //Procédure
+    
     sous_chaine_1lettre[taille_souschaine] = '\0';
     sous_chaine_polarite[taille_souschaine] = '\0';
     sous_chaine_3lettres[taille_souschaine*3] = '\0';
@@ -74,6 +81,8 @@ void creation_sous_chaine(char* sequence1, char* sous_chaine_1lettre, char* sous
 }
 
 void save_output(char* sequence1, char* sequence2, char* sous_chaine1_lettre, char* sous_chaine_polarite, char* sous_chaine_3lettres) {
+    //Procédure
+    
     printf("Dans quel fichier voulez-vous stocker le résultat ?\n");
     char path_output[30];
     get_path_from_user(path_output);
@@ -128,6 +137,8 @@ void save_output(char* sequence1, char* sequence2, char* sous_chaine1_lettre, ch
 
 
 void module_sous_chaine_polarite_maximale() {
+    //Procédure
+    
     char path_input[30];
     char path_input2[30];
 
