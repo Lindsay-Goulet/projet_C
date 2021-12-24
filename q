@@ -1,1 +1,0 @@
- - --TGTCC GAG---CCCA--C---G--C C--TG-TC-     --G--G-TG-AA-A
