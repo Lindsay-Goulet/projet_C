@@ -131,7 +131,7 @@ int polarite(char aa) {
 double pourct_id(double taille_seq, int nb_id) {
 	double id = nb_id*100/taille_seq; /*produit en croix pour calculer le pourcentage*/
 	return id;
-}
+} /*a retirer*/
 
 int verification_sequence(char* path_input, char* sequence, int taille_seq) {
     extract_sequence(path_input, sequence);
@@ -141,8 +141,8 @@ int verification_sequence(char* path_input, char* sequence, int taille_seq) {
 	|| ((sequence[taille_seq-3] == 'T' || sequence[taille_seq-3] == 'U') && sequence[taille_seq-2] == 'A' && sequence[taille_seq-1] == 'A') 
 	|| ((sequence[taille_seq-3] == 'T' || sequence[taille_seq-3] == 'U') && sequence[taille_seq-2] == 'A' && sequence[taille_seq-1] == 'G'))
 	&& (taille_seq%3 == 0)) {
-        return 1;
-/*ne pas oublier les U*/ /* C'EST FAIT !*/
+        return 1; 
+
     }
 
     else { 
