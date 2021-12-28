@@ -16,7 +16,7 @@ int nb_nucleotide_ident(char* sequence1, char* sequence2, int taille_seq) {
 	int i;
 	int identique=0;
 	for (i=0; i<taille_seq; i++) { 
-		if (sequence1[i] == sequence2[i]) { //Je parcours mes séq et je compte le nb de différence entre les deux
+		if (sequence1[i] == sequence2[i]) { //Je parcours mes séq et je compte le nb de différences entre les deux
 			identique++;
 		}
 	}

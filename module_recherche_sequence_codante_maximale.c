@@ -171,7 +171,7 @@ void creation_sequence_ORF_antisens(int taille_seq_codante, char* sequence, int 
 void module_recherche_sequence_codante_maximale() {
 	/* - Procédure qui demande en entrée un fichier contenant une séquence ADN au format FASTA.
 	   - Recherche dans la séquence ADN la plus grande séquence codante
-	   - Et renvoie dans un fichier cette ORF la plus grande*/
+	   - Et renvoie dans un fichier cette CDS*/
 
 	int start;
 	int stop;
@@ -188,7 +188,6 @@ void module_recherche_sequence_codante_maximale() {
 	
 	int codante = codons_start_stop_ORF_max(sequence, taille_seq, &start, &stop, &taille_seq_codante); //Renvoie 2 si codant sur brin sens, 1 si codant sur brin antisens, 0 si non codant
 	char seq_cod[taille_seq_codante+1];
-	printf("Start = %d, Stop = %d\n", start+1, stop+1); //Permet d'afficher où se trouve le codon START et le codon STOP, on ajoute +1 car l'indentation d'un tableau commence à 0
 
 	//Si l'ORF se trouve sur le brin sens
 	if (codante == 2) {

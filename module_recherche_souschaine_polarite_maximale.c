@@ -19,15 +19,12 @@ void matrice_alignement(char* sequence1, char* sequence2, int taille_seq1, int t
     int j;
     
     mat_alignement[1][1] = '0';
-    mat_alignement[0][0] = '0';
-    mat_alignement[0][1] = '0';
-    mat_alignement[1][0] = '0';
 
-    for (j=2; j<taille_seq1+2; j++) { //On met la polarite sequence 1 sur la première ligne de la matrice
+    for (j=2; j<taille_seq1+2; j++) { //On met la polarite aa 1 sur la première ligne de la matrice
         mat_alignement[0][j] = polarite(sequence1[j-2])+'0';
         mat_alignement[1][j] = '0';
     }
-    for (i=2; i<taille_seq2+2; i++) { //On met la polarite de la sequence 2 sur la première colonne de la matrice
+    for (i=2; i<taille_seq2+2; i++) { //On met la polarite de la aa 2 sur la première colonne de la matrice
         mat_alignement[i][0] = polarite(sequence2[i-2])+'0';
         mat_alignement[i][1] = '0';
     }
@@ -44,7 +41,7 @@ void matrice_alignement(char* sequence1, char* sequence2, int taille_seq1, int t
 }
 
 void trouver_souschaine_maximale(int taille_seq1, int taille_seq2, char mat_alignement[taille_seq2+2][taille_seq1+2], int* taille_souschaine, int* debut_souschaine) {
-    //Procédure
+    //Procédure qui récupère la position du début et de la foin de la sous_chaine maximale
     
     int i;
     int j;
@@ -52,7 +49,7 @@ void trouver_souschaine_maximale(int taille_seq1, int taille_seq2, char mat_alig
     int debut=-1;
     for (i=2; i<taille_seq2+2; i++) { //On parcourt la matrice
         for (j=2; j<taille_seq1+2; j++) {
-            if (mat_alignement[i][j] > taille) {
+            if (mat_alignement[i][j] > taille) { //On cherche le chiffre le plus élevé dans la matrice, il correspond à la taille de chaque sous_chaîne
             	taille = mat_alignement[i][j];
             	debut = (j-2)-(taille-'0')+1;
             }
@@ -68,16 +65,46 @@ void creation_sous_chaine(char* sequence1, char* sous_chaine_1lettre, char* sous
     
     sous_chaine_1lettre[taille_souschaine] = '\0';
     sous_chaine_polarite[taille_souschaine] = '\0';
-    sous_chaine_3lettres[taille_souschaine*3] = '\0';
+    sous_chaine_3lettres[taille_souschaine*3+taille_souschaine-1] = '\0'; //taille_souschaine-1 pour insérer les - dans la sequence
     int i = 0;
+    int k = 0;
     int j;
+    char code_3lettres[4]
 
     for (j=debut_souschaine; j<debut_souschaine+taille_souschaine; j++) {
         sous_chaine_1lettre[i] = sequence1[j];
         sous_chaine_polarite[i] = polarite(sequence1[j])+'0';
-       /* sous_chaine_3lettres[i] = ??? ; */
+        code_3_lettres(sequence1[j], code_3lettres); //on récupère le code 3 lettres de l'aa
+        sous_chaine_3lettres[k] = code_3lettres[0]; //on le stocke dans le tableau sous_chaine_3_lettres
+        sous_chaine_3lettres[k+1] = code_3lettres[1];
+        sous_chaine_3lettres[k+2] = code_3lettres[2];
         i++;
+        k+=3
      }
+}
+
+void code_3_lettres(char aa, char* code_3lettres) {
+    if (aa == 'E') code_3lettres = "Glu";
+    else if (aa == 'D') code_3lettres = "Asp";
+    else if (aa == 'A') code_3lettres = "Ala";
+    else if (aa == 'R') code_3lettres = "Arg";
+    else if (aa == 'N') code_3lettres = "Asn";
+    else if (aa == 'C') code_3lettres = "Cys";
+    else if (aa == 'Q') code_3lettres = "Gln";
+    else if (aa == 'G') code_3lettres = "Gly";
+    else if (aa == 'H') code_3lettres = "His";
+    else if (aa == 'I') code_3lettres = "Ile";
+    else if (aa == 'L') code_3lettres = "Leu";
+    else if (aa == 'K') code_3lettres = "Lys";
+    else if (aa == 'M') code_3lettres = "Met";
+    else if (aa == 'F') code_3lettres = "Phe";
+    else if (aa == 'P') code_3lettres = "Pro";
+    else if (aa == 'S') code_3lettres = "Ser";
+    else if (aa == 'T') code_3lettres = "Thr";
+    else if (aa == 'W') code_3lettres = "Trp";
+    else if (aa == 'Y') code_3lettres = "Tyr";
+    else if (aa == 'V') code_3lettres = "Val";
+
 }
 
 void save_output(char* sequence1, char* sequence2, char* sous_chaine1_lettre, char* sous_chaine_polarite, char* sous_chaine_3lettres) {
@@ -133,8 +160,6 @@ void save_output(char* sequence1, char* sequence2, char* sous_chaine1_lettre, ch
     }
     fclose(f);
 }
-
-
 
 void module_sous_chaine_polarite_maximale() {
     //Procédure

@@ -131,16 +131,11 @@ int longueur_sequence(const char* path_input) {
 int polarite(char aa) {
 	//Fonction qui retourne 0 si l'acide aminé est polaire et 1 sinon.
 	if ((aa == 'C') || (aa == 'Y') || (aa == 'T') || (aa == 'S') || (aa == 'N') || (aa == 'Q') || (aa == 'H') || (aa == 'K') || (aa == 'R') || (aa == 'D') || (aa == 'E')) {
-		return 0; //Retourne aa polaire
+		return 0; //aa polaire
 	}
 	else 
-		return 1; /*retourne apol */
+		return 1; /*aa apolaire */
 }
-
-double pourct_id(double taille_seq, int nb_id) {
-	double id = nb_id*100/taille_seq; /*produit en croix pour calculer le pourcentage*/
-	return id;
-} /*a retirer*/
 
 int verification_sequence(char* path_input, char* sequence, int taille_seq) {
 	//Fonction qui renvoie 1 si la séquence est codante et 0 sinon.
@@ -151,7 +146,7 @@ int verification_sequence(char* path_input, char* sequence, int taille_seq) {
 	|| ((sequence[taille_seq-3] == 'T' || sequence[taille_seq-3] == 'U') && sequence[taille_seq-2] == 'A' && sequence[taille_seq-1] == 'A') 
 	|| ((sequence[taille_seq-3] == 'T' || sequence[taille_seq-3] == 'U') && sequence[taille_seq-2] == 'A' && sequence[taille_seq-1] == 'G'))
 	&& (taille_seq%3 == 0)) {
-        return 1; 
+        return 1; //codante
 
     }
 
