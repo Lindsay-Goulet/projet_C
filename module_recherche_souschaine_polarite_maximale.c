@@ -59,55 +59,139 @@ void trouver_souschaine_maximale(int taille_seq1, int taille_seq2, char mat_alig
     *taille_souschaine = taille-'0';
     *debut_souschaine = debut;
 }
+
+
+void conversion_3_lettres(char aa, char* code_3lettres) {
+    if (aa == 'E') {
+        code_3lettres[0] = 'G';
+        code_3lettres[1] = 'l';
+        code_3lettres[2] = 'u'; }
+
+    else if (aa == 'D') {
+        code_3lettres[0] = 'A';
+        code_3lettres[1] = 's';
+        code_3lettres[2] = 'p'; }
+
+    else if (aa == 'A') {
+        code_3lettres[0] = 'A';
+        code_3lettres[1] = 'l';
+        code_3lettres[2] = 'a'; }
+ 
+    else if (aa == 'R') {
+        code_3lettres[0] = 'A';
+        code_3lettres[1] = 'r';
+        code_3lettres[2] = 'g'; }
+
+    else if (aa == 'N') {
+        code_3lettres[0] = 'A';
+        code_3lettres[1] = 's';
+        code_3lettres[2] = 'n'; }
+
+    else if (aa == 'C') {
+        code_3lettres[0] = 'C';
+        code_3lettres[1] = 'y';
+        code_3lettres[2] = 's'; }
+
+    else if (aa == 'Q') {
+        code_3lettres[0] = 'G';
+        code_3lettres[1] = 'l';
+        code_3lettres[2] = 'n'; }
     
+    else if (aa == 'G') {
+        code_3lettres[0] = 'G';
+        code_3lettres[1] = 'l';
+        code_3lettres[2] = 'y'; }
+
+    else if (aa == 'H') {
+        code_3lettres[0] = 'H';
+        code_3lettres[1] = 'i';
+        code_3lettres[2] = 's'; } 
+
+    else if (aa == 'I') {
+        code_3lettres[0] = 'I';
+        code_3lettres[1] = 'l';
+        code_3lettres[2] = 'e'; }
+
+    else if (aa == 'L') {
+        code_3lettres[0] = 'L';
+        code_3lettres[1] = 'e';
+        code_3lettres[2] = 'u'; }
+
+    else if (aa == 'K') {
+        code_3lettres[0] = 'L';
+        code_3lettres[1] = 'y';
+        code_3lettres[2] = 's'; }
+    
+    else if (aa == 'M') {
+        code_3lettres[0] = 'M';
+        code_3lettres[1] = 'e';
+        code_3lettres[2] = 't'; }
+
+    else if (aa == 'F') {
+        code_3lettres[0] = 'P';
+        code_3lettres[1] = 'h';
+        code_3lettres[2] = 'e'; }
+
+    else if (aa == 'P') {
+        code_3lettres[0] = 'P';
+        code_3lettres[1] = 'r';
+        code_3lettres[2] = 'o'; }
+
+    else if (aa == 'S') {
+        code_3lettres[0] = 'S';
+        code_3lettres[1] = 'e';
+        code_3lettres[2] = 'r'; }
+
+    else if (aa == 'T') {
+        code_3lettres[0] = 'T';
+        code_3lettres[1] = 'h';
+        code_3lettres[2] = 'r'; }
+
+    else if (aa == 'W') {
+        code_3lettres[0] = 'T';
+        code_3lettres[1] = 'r';
+        code_3lettres[2] = 'p'; }
+
+    else if (aa == 'Y') {
+        code_3lettres[0] = 'T';
+        code_3lettres[1] = 'y';
+        code_3lettres[2] = 'r'; }
+
+    else if (aa == 'V') {
+        code_3lettres[0] = 'V';
+        code_3lettres[1] = 'a';
+        code_3lettres[2] = 'l'; }
+
+}
+
 void creation_sous_chaine(char* sequence1, char* sous_chaine_1lettre, char* sous_chaine_polarite, char* sous_chaine_3lettres, int taille_souschaine, int debut_souschaine) {
     //Procédure
     
-    sous_chaine_1lettre[taille_souschaine] = '\0';
-    sous_chaine_polarite[taille_souschaine] = '\0';
-    sous_chaine_3lettres[taille_souschaine*3+taille_souschaine-1] = '\0'; //taille_souschaine-1 pour insérer les - dans la sequence
     int i = 0;
     int k = 0;
     int j;
-    char code_3lettres[4]
+    char code_3lettres[4];
 
     for (j=debut_souschaine; j<debut_souschaine+taille_souschaine; j++) {
         sous_chaine_1lettre[i] = sequence1[j];
         sous_chaine_polarite[i] = polarite(sequence1[j])+'0';
-        code_3_lettres(sequence1[j], code_3lettres); //on récupère le code 3 lettres de l'aa
-        sous_chaine_3lettres[k] = code_3lettres[0]; //on le stocke dans le tableau sous_chaine_3_lettres
+        conversion_3_lettres(sequence1[j], code_3lettres); /*on récupère le code 3 lettres de l'aa*/
+        sous_chaine_3lettres[k] = code_3lettres[0]; /*on le stocke dans le tableau sous_chaine_3_lettres*/
         sous_chaine_3lettres[k+1] = code_3lettres[1];
         sous_chaine_3lettres[k+2] = code_3lettres[2];
+        sous_chaine_3lettres[k+3] = '-';
         i++;
-        k+=3
+        k+=4;
      }
+
+    sous_chaine_1lettre[taille_souschaine] = '\0';
+    sous_chaine_polarite[taille_souschaine] = '\0';
+    sous_chaine_3lettres[taille_souschaine*3+taille_souschaine-1] = '\0';
 }
 
-void code_3_lettres(char aa, char* code_3lettres) {
-    if (aa == 'E') code_3lettres = "Glu";
-    else if (aa == 'D') code_3lettres = "Asp";
-    else if (aa == 'A') code_3lettres = "Ala";
-    else if (aa == 'R') code_3lettres = "Arg";
-    else if (aa == 'N') code_3lettres = "Asn";
-    else if (aa == 'C') code_3lettres = "Cys";
-    else if (aa == 'Q') code_3lettres = "Gln";
-    else if (aa == 'G') code_3lettres = "Gly";
-    else if (aa == 'H') code_3lettres = "His";
-    else if (aa == 'I') code_3lettres = "Ile";
-    else if (aa == 'L') code_3lettres = "Leu";
-    else if (aa == 'K') code_3lettres = "Lys";
-    else if (aa == 'M') code_3lettres = "Met";
-    else if (aa == 'F') code_3lettres = "Phe";
-    else if (aa == 'P') code_3lettres = "Pro";
-    else if (aa == 'S') code_3lettres = "Ser";
-    else if (aa == 'T') code_3lettres = "Thr";
-    else if (aa == 'W') code_3lettres = "Trp";
-    else if (aa == 'Y') code_3lettres = "Tyr";
-    else if (aa == 'V') code_3lettres = "Val";
 
-}
 
-void save_output(char* sequence1, char* sequence2, char* sous_chaine1_lettre, char* sous_chaine_polarite, char* sous_chaine_3lettres) {
+void save_output(int taille_sous_chaine, char* sequence1, char* sequence2, char* sous_chaine1_lettre, char* sous_chaine_polarite, char* sous_chaine_3lettres) {
     //Procédure
     
     printf("Dans quel fichier voulez-vous stocker le résultat ?\n");
@@ -125,7 +209,6 @@ void save_output(char* sequence1, char* sequence2, char* sous_chaine1_lettre, ch
     fprintf(f, "sequence1\t");
     i=0;
     while (sequence1[i] != '\0') {
-        printf("%c",sequence1[i]);
         fputc(sequence1[i], f);
         i++;
     }
@@ -137,13 +220,15 @@ void save_output(char* sequence1, char* sequence2, char* sous_chaine1_lettre, ch
         fputc(sequence2[i], f);
         i++;
     }
-    fprintf(f, "\n\nRecherche de la sous-chaine maximale de la séquence 1 telle que la séquence 2 contient une série d'acides aminés de polarité identique: (0:hydrophile, 1:hydrophobe)\n\n");
+    fprintf(f, "\n\nRecherche de la sous-chaine maximale de la sequence 1 telle que la sequence 2 contient une serie d'acides aminés de polarite identique: (0:hydrophile, 1:hydrophobe)\n\n");
     
     i=0;
     while (sous_chaine_3lettres[i] != '\0') {
+        printf("%c", sous_chaine_3lettres[i]);
         fputc(sous_chaine_3lettres[i], f);
         i++;
     }
+    fprintf(f, "  (longueur = %d)", taille_sous_chaine);
     fprintf(f, "\n");
 
     i=0;
@@ -190,9 +275,9 @@ void module_sous_chaine_polarite_maximale() {
 	
 	char sous_chaine_1lettre[taille_souschaine+1];
     char sous_chaine_polarite[taille_souschaine+1];
-    char sous_chaine_3lettres[taille_souschaine*3+1];
+    char sous_chaine_3lettres[taille_souschaine*3+taille_souschaine];
 	creation_sous_chaine(sequence1, sous_chaine_1lettre, sous_chaine_polarite, sous_chaine_3lettres, taille_souschaine, debut_souschaine);
    
-    save_output(sequence1, sequence2, sous_chaine_1lettre, sous_chaine_polarite, sous_chaine_3lettres);
+    save_output(taille_souschaine, sequence1, sequence2, sous_chaine_1lettre, sous_chaine_polarite, sous_chaine_3lettres);
 }
 
